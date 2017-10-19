@@ -1,8 +1,8 @@
 <?php
 
-include_once("EJDataAdapter.php");
+include_once("ConectaBD.php");
 
-class EJDataBase {
+class Pergunta {
 
     public function selecionaPergunta($tpPergunta) {
 //        $conBanco = new EJDataAdapter();
@@ -10,20 +10,22 @@ class EJDataBase {
 //        $sql = "SELECT * FROM tbpergunta WHERE IDtpViolencia = $tpPergunta";        
 //        return $conBanco->realizaSelect($sql); 
 
-        EJDataAdapter::conectarBanco();
+        ConectaBD::conectarBanco();
         $sql = "SELECT * FROM tbpergunta WHERE IDtpViolencia = '$tpPergunta'";
-        $resultado = EJDataAdapter::realizarSelect($sql);
-        EJDataAdapter::fecharBanco();
+        $resultado = ConectaBD::realizarSelect($sql);
+        ConectaBD::fecharBanco();
         return $resultado;
     }
 
     public function selecionaRespostas($tpPergunta) {
-        EJDataAdapter::conectarBanco();
+        ConectaBD::conectarBanco();
         $sql = "SELECT * FROM tbresposta WHERE IDpergunta = '$idPergunta'";
-        $resultado = EJDataAdapter::realizarSelect($sql);
-        EJDataAdapter::fecharBanco();
+        $resultado = ConectaBD::realizarSelect($sql);
+        ConectaBD::fecharBanco();
         return $resultado;
     }
+    
+    
 
 }
 
