@@ -25,6 +25,14 @@ class Pergunta {
         return $resultado;
     }
     
+     public function verResposta($idResposta) {
+        ConectaBD::conectarBanco();
+        $sql = "SELECT * FROM tbresposta WHERE IDresposta = '$idResposta'";
+        $resultado = ConectaBD::realizarSelect($sql);
+        ConectaBD::fecharBanco();
+        return $resultado;
+    }
+    
     
 
 }

@@ -12,6 +12,7 @@ class ResultadoTeste {
     }
 
     public function registraConclusao($idUso, $idTpViolencia) {
+        
         ConectaBD::conectarBanco();
         $sql = "INSERT INTO `dbempodera`.`tbresultadoconclusao` (`IDuso`, `IDtpViolencia`) VALUES ('$idUso', '$idTpViolencia');";
         $resultado = ConectaBD::realizarInsert($sql);
