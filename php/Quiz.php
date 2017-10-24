@@ -9,7 +9,7 @@ class Quiz {
     public static $idUso;
     public static $arrayResultadoFinal = array();
 
-    public function construct($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento) {
+    public function __construct($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento) {
         Quiz::registraUso($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento);
     }
 
@@ -29,22 +29,32 @@ class Quiz {
         }
     }
 
+//Notice: Undefined index: IDpergunta in C:\xampp\htdocs\TamosJuntas\php\Quiz.php on line 43
     public function sorteiaPergunta($tpPergunta) {
 
-        $pergunta = Pergunta::selecionaPergunta($tpPergunta);
-        $idPergunta = $pergunta['IDpergunta'];
-        $controlador = false;
-        while ($controlador == false) {
+        $perguntaselect = Pergunta::selecionaPergunta($tpPergunta);
+        $indicerrand = rand(0, (count($perguntaselect)) - 1);
+        $pergunta = ($perguntaselect[$indicerrand]);
+        $idPergunta = $pergunta["IDpergunta"];
+
+        $controlador = true;
+        while ($controlador == true) {
             // if (array_key_exists($pergunta['IDpergunta'], self::$arrayRespostas))
             if (in_array($idPergunta, self::$arrayRespostas)) {
+                $perguntaselect = Pergunta::selecionaPergunta($tpPergunta);
+                $indicerrand = rand(0, count($perguntaselect)- 1);
+                $pergunta = $perguntaselect[$indicerrand];
+                $idPergunta = $pergunta["IDpergunta"];
+                echo $idPergunta;
+                echo '<br>';
+            } else {                
                 $controlador = true;
-            } else {
-                $pergunta = Pergunta::selecionaPergunta($tpPergunta);
-                $idPergunta = $pergunta['IDpergunta'];
             }
         }
-        //e se todas tiverem sido perguntadas?
-        return $idPergunta;
+
+
+        //        e se todas tiverem sido perguntadas?
+        return $pergunta["IDpergunta"];
     }
 
     public function selecionaResposta($idPergunta) {

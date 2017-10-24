@@ -12,7 +12,7 @@ class ConectaBD {
     
     private static $mysqli;
 
-    public function construct() {
+    public function __construct() {
         $this->conectarBanco();
     }
 
