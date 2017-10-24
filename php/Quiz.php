@@ -51,8 +51,6 @@ class Quiz {
                 $controlador = true;
             }
         }
-
-
         //        e se todas tiverem sido perguntadas?
         return $pergunta["IDpergunta"];
     }
