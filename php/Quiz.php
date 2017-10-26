@@ -15,17 +15,22 @@ class Quiz {
 
     public function salvaResposta($idResp) {
         array_push(self::$arrayRespostas, array("idUso" => self::$idUso, "idResp" => $idResp));
+        Quiz::verificaViolência($idResp);
     }
 
     public function verificaViolência($idResp) {
         $resposta = Pergunta::verResposta($idResp);
-        if ($resposta['simnao']) {
-            if ($resposta['simnao'] == 'sim') {
-                array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $resposta[IDpergunta]));
-                //verificar se tem como eu pegar tpViolência a partir da pergunta
-            }
+        //verificar se tem como eu pegar tpViolência a partir da pergunta
+        $tpViolencia = Pergunta::selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
+
+        if (is_null($resposta[0]['simnao'])) {
+            echo"isnull";
+            array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $resposta[0]['IDpergunta']));
         } else {
-            array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $resposta[IDpergunta]));
+            echo"isnotinull";
+            if ($resposta[0]['simnao'] == 'sim') {
+                array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
+            }
         }
     }
 
@@ -42,17 +47,15 @@ class Quiz {
             // if (array_key_exists($pergunta['IDpergunta'], self::$arrayRespostas))
             if (in_array($idPergunta, self::$arrayRespostas)) {
                 $perguntaselect = Pergunta::selecionaPergunta($tpPergunta);
-                $indicerrand = rand(0, count($perguntaselect)- 1);
+                $indicerrand = rand(0, count($perguntaselect) - 1);
                 $pergunta = $perguntaselect[$indicerrand];
-                $idPergunta = $pergunta["IDpergunta"];
-                echo $idPergunta;
-                echo '<br>';
-            } else {                
-                $controlador = true;
+                //$idPergunta = $pergunta["IDpergunta"];                
+            } else {
+                $controlador = false;
             }
         }
         //        e se todas tiverem sido perguntadas?
-        return $pergunta["IDpergunta"];
+        return $pergunta;
     }
 
     public function selecionaResposta($idPergunta) {
@@ -64,11 +67,41 @@ class Quiz {
         self::$idUso = RegistroUso::registraUso($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento);
     }
 
-    public function resultadoTeste() {
+    public function respostasTeste() {
 
         foreach (self::$arrayRespostas as $arrayFinal) {
-            ResultadoTeste::resgistaResult($arrayFinal['idUso'], $arrayFinal['idResp']);
+            RespostasTeste::resgistaResult($arrayFinal['idUso'], $arrayFinal['idResp']);
         }
+    }
+
+    public function resultadoFinal() {
+        if ((count(self::$arrayResultadoFinal)) == 6) {
+            return true;
+        } elseif ((count(self::$arrayRespostas)) == 54) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function sorteiaTipoViolencia() {
+        $tpviolenciaselect = Pergunta::selecionaTpViolencia();
+        $indicerrand = rand(0, (count($tpviolenciaselect)) - 2);
+        $tpviolencia = ($tpviolenciaselect[$indicerrand]);
+        $idtpViolencia = $tpviolencia["IDtpViolencia"];
+
+        $controlador = true;
+        while ($controlador == true) {
+            if (in_array($idtpViolencia, self::$arrayResultadoFinal)) {
+                $tpviolenciaselect = Pergunta::selecionaTpViolencia();
+                $indicerrand = rand(0, (count($tpviolenciaselect)) - 2);
+                $tpviolencia = ($tpviolenciaselect[$indicerrand]);
+                //$idtpViolencia = $tpviolencia["IDtpViolencia"];                
+            } else {
+                $controlador = false;
+            }
+        }
+        return $tpviolencia;
     }
 
 }

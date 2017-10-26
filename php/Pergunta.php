@@ -16,8 +16,25 @@ class Pergunta {
         ConectaBD::fecharBanco();
         return $resultado;
     }
+    public function selecionaTpViolenciaPergunta($idPergunta) {
+//       
+        ConectaBD::conectarBanco();
+        $sql = "SELECT IDtpViolencia FROM tbpergunta WHERE IDpergunta = '72'";
+        $resultado = ConectaBD::realizarSelect($sql);
+        ConectaBD::fecharBanco();
+        return $resultado;
+    }
+    
+    public function selecionaTpViolencia() {
+//       
+        ConectaBD::conectarBanco();
+        $sql = "SELECT * FROM tbtipoviolencia";
+        $resultado = ConectaBD::realizarSelect($sql);
+        ConectaBD::fecharBanco();
+        return $resultado;
+    }
 
-    public function selecionaRespostas($tpPergunta) {
+    public function selecionaRespostas($idPergunta) {
         ConectaBD::conectarBanco();
         $sql = "SELECT * FROM tbresposta WHERE IDpergunta = '$idPergunta'";
         $resultado = ConectaBD::realizarSelect($sql);

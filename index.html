@@ -22,12 +22,8 @@
         <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-
-
         <script src="js/jquery.min.js"></script>
         <script src="js/carrousselSlider.js"></script>
-
-
 
     </head>
 
@@ -120,45 +116,19 @@
                     </div>
                 </div>          
 
-                <div class="carrousel relative mb2">
+                <?php
 
-                    <div class="carrousel__container mod--hidden mb1" 
-                         data-carrousel-btn-previous-text="Show previous panel"
-                         data-carrousel-btn-next-text="Show next panel"
-                         data-carrousel-existing-hx="h3">     
+            include_once 'Quiz.php';
+            include_once 'Pergunta.php';
 
-                        <div class="carrousel__content">
-                            <h3>Test 1</h3>
-                            <form action="">
-                                <input type="checkbox" name="vehicle" value="Bike">I have a bike<br>
-                                <input type="checkbox" name="vehicle" value="Car">I have a car 
-                            </form>
-                        </div>
+            $quiz = new Quiz((date('dmyhis')), 0, 0, 0, 0);
+            $pergunta = $quiz-&gt;sorteiaPergunta(1);
+            $resposta = $quiz-&gt;selecionaResposta($pergunta[&quot;IDpergunta&quot;]);
 
-                        <div class="carrousel__content">
-                            <h3>Test 2</h3>
-                            <form action="">
-                                <input type="radio" name="gender" value="male"> Male<br>
-                                <input type="radio" name="gender" value="female"> Female<br>
-                                <input type="radio" name="gender" value="other"> Other
-                            </form>
-                        </div>
+            echo($pergunta[&quot;pergunta&quot;]);
+            var_dump($resposta);
 
-                        <div class="carrousel__content">
-                            <h3>Test 3</h3>
-                            Ici le contenu 3<br>
-                            fdsfdsfdsfdsfds<br>fdsfdsfds
-                            fdsfdsfdsfdsfds<br>fdsfdsfds
-                        </div>
-
-                        <div class="carrousel__content">               
-                            <h3>Test final</h3>                    
-                            Ici le contenu 4<br>              
-                            fdsfdsfdsfdsfds<br>fdsfdsfds             
-                            fdsfdsfdsfdsfds<br>fdsfdsfds
-                        </div>
-                    </div>
-                </div>
+                ?>
 
             </div>
         </section>
@@ -318,8 +288,6 @@
             </div>
         </footer>
 
-        <!-- Portfolio Modals -->
-
         <!-- Modal 1  Lei Maria da Penha-->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -432,14 +400,14 @@
                                     <p class="item-intro text-muted"></p>
                                     <img class="img-fluid d-block mx-auto" src="img/portfolio/03-full.jpg" alt="">
                                     <p>
-                                    
-                                    Em março de 2015 por pressão de movimentos de mulheres e seguindo as recomendações
-                                    da Comissão Parlamentar Mista de Inquérito sobre Violência Contra a Mulher (CPMIVCM),
-                                    foi sancionada a Lei nº 13.104/15, que altera o Código Penal Brasileiro,
-                                    passando a prever o feminicídio como uma das circunstâncias qualificadoras
-                                    do homicídio e inclui o feminicídio como crime hediondo, previsto no artigo 1º da
-                                    Lei nº 8.072, de 25 de julho de 1990.
-                                        
+
+                                        Em março de 2015 por pressão de movimentos de mulheres e seguindo as recomendações
+                                        da Comissão Parlamentar Mista de Inquérito sobre Violência Contra a Mulher (CPMIVCM),
+                                        foi sancionada a Lei nº 13.104/15, que altera o Código Penal Brasileiro,
+                                        passando a prever o feminicídio como uma das circunstâncias qualificadoras
+                                        do homicídio e inclui o feminicídio como crime hediondo, previsto no artigo 1º da
+                                        Lei nº 8.072, de 25 de julho de 1990.
+
                                     </p>
                                     <p>
                                         A lei do feminicídio, trata-se de estratégia política para nomear e qualificar
@@ -452,16 +420,16 @@
                                         termo feminicídio, também  reforça a responsabilidade da sociedade e do Estado no
                                         cumprimento de suas obrigações na proteção das mulheres e na promoção de seus direitos
                                     </p>
-                                    
+
                                     <!-- <ul class="list-inline">
                                        <li>Date: January 2017</li>
                                         <li>Client: Finish</li>
                                         <li>Category: Identity</li>
                                     </ul> -->
-                                     <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2015/lei/L13104.htm" target="_blank"> <button class="btn btn-primary" type="submit">                 
+                                    <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2015/lei/L13104.htm" target="_blank"> <button class="btn btn-primary" type="submit">                 
                                             Ver Lei
                                         </button> </a>
-                                    
+
                                     <button class="btn btn-primary" data-dismiss="modal" type="button">
                                         <i class="fa fa-times"></i>
                                         Fechar</button>
@@ -491,7 +459,7 @@
                                     <p class="item-intro text-muted"></p>
                                     <img class="img-fluid d-block mx-auto" src="img/portfolio/04-full.jpg" alt="">
                                     <p>
-                                    
+
                                         A Secretaria Especial de Políticas para as Mulheres (SEPM) tem como principal 
                                         objetivo promover a igualdade entre homens e mulheres e combater todas as formas
                                         de preconceito e discriminação herdadas de uma sociedade patriarcal e excludente.
@@ -499,16 +467,16 @@
                                         a construção de um Brasil mais justo, igualitário e democrático, por meio da valorização
                                         da mulher e de sua inclusão no processo de desenvolvimento social, econômico, político 
                                         e cultural do País.
-                                      
+
                                     </p>
                                     <p>
-                                    
+
                                         Hoje, a questão de gênero está incluída nas políticas dos três níveis de Governo.
                                         Além disso, percebe-se uma crescente mobilização da sociedade civil na busca de igualdade
                                         entre homens e mulheres, em termos de direitos e obrigações. Essas mudanças têm sido 
                                         possíveis a partir de um processo contínuo de cooperação transversal entre a SPM e os demais
                                         Ministérios, a sociedade civil e a comunidade internacional. 
-                                        
+
                                     </p>
                                     <!--<ul class="list-inline">
                                         <li>Date: January 2017</li>
