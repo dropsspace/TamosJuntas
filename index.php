@@ -116,55 +116,6 @@
                 </div>
             </div>          
 
-            <?php
-            include_once 'php/Quiz.php';
-            include_once 'php/Pergunta.php';
-
-            $quiz = new Quiz((date('dmyhis')), 0, 0, 0, 0);
-            $resultadoFinal = false;
-
-            //while ($resultadoFinal == false) {
-
-            $tipoPergunta = $quiz->sorteiaTipoViolencia();
-            $pergunta = $quiz->sorteiaPergunta($tipoPergunta['IDtpViolencia']);
-            $resposta = $quiz->selecionaResposta($pergunta['IDpergunta']);
-
-            echo($pergunta["pergunta"]);
-            if ($pergunta["tpResposta"] == "R") {
-                ?>
-                <div class = "radio">
-                    <label><input type = "radio" name = "radioSim" value="1">Sim</label>
-                </div>
-                <div class = "radio">
-                    <label><input type = "radio" name = "radioNao" value="0">Não</label>
-                </div>
-                <?php
-            } else {
-                ?>
-                <div class = "checkbox">
-                    <label><input type = "checkbox" name = "check1" value="<?php $resposta[0]['IDresposta']; ?>"><?php echo $resposta[0]['resposta']; ?></label>
-                </div>
-                <div class = "checkbox">
-                    <label><input type = "checkbox" name = "check2" value="<?php $resposta[1]['IDresposta']; ?>"><?php echo $resposta[1]['resposta']; ?></label>
-                </div>            
-                <div class = "checkbox">
-                    <label><input type = "checkbox" name = "check3" value="<?php $resposta[2]['IDresposta']; ?>"><?php echo $resposta[2]['resposta']; ?></label>
-                </div>
-                <?php
-            }
-            //quando selecionar e der próxima
-            $quiz->salvaResposta(2);
-//                var_dump($quiz::$arrayRespostas[0]['idUso']);
-//                echo '<br>';
-//                var_dump($quiz::$arrayRespostas[0]['idResp']);
-//                
-            //$resultadoFinal = $quiz->resultadoFinal();
-            //}
-            ?>
-
-            <button class="btn btn-primary" type="submit"> Próxima </button>
-
-
         </div>
     </section>
 
