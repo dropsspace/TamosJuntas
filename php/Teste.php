@@ -19,7 +19,6 @@ and open the template in the editor.
         $resultadoFinal = false;
 
         //while ($resultadoFinal == false) {
-
         $tipoPergunta = $quiz->sorteiaTipoViolencia();
         $pergunta = $quiz->sorteiaPergunta($tipoPergunta['IDtpViolencia']);
         $resposta = $quiz->selecionaResposta($pergunta['IDpergunta']);
@@ -27,7 +26,7 @@ and open the template in the editor.
         echo($pergunta["pergunta"]);
         if ($pergunta["tpResposta"] == "R") {
             ?>
-            <form action="quiz.php" method="post">
+            <form method="post">
                 <div class = "radio">
                     <label><input type = "radio" name = "radioSim" value="1">Sim</label>
                 </div>
@@ -35,12 +34,11 @@ and open the template in the editor.
                     <label><input type = "radio" name = "radioNao" value="0">Não</label>
                 </div>
                 <button class="btn btn-primary" type="submit"  onclick="myFunction()"> Próxima </button>
-
             </form>
             <?php
         } else {
             ?>
-            <form action="quiz.php" method="post">
+            <form method="post">
 
                 <div class = "checkbox">
                     <label><input type = "checkbox" name = "check1" value="<?php $resposta[0]['IDresposta']; ?>"><?php echo $resposta[0]['resposta']; ?></label>
@@ -54,11 +52,11 @@ and open the template in the editor.
                 <button class="btn btn-primary" type="submit"> Próxima </button>
 
             </form>
-
             <?php
         }
+//          
         //quando selecionar e der próxima
-        $quiz->salvaResposta(2);
+        $quiz->salvaResposta(aquivaiidresp);
 //                var_dump($quiz::$arrayRespostas[0]['idUso']);
 //                echo '<br>';
 //                var_dump($quiz::$arrayRespostas[0]['idResp']);

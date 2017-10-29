@@ -3,30 +3,22 @@
 include_once 'Pergunta.php';
 include_once 'RegistroUso.php';
 
-  $respostaR1 = Quiz::pegaValor("radioSim");
-  $respostaR2 = Quiz::pegaValor("radioNao");
-  $respostaC1 = Quiz::pegaValor("check1");
-  $respostaC2 = Quiz::pegaValor("check2");
-  $respostaC3 = Quiz::pegaValor("check3");
-  $respostaC4 = Quiz::pegaValor("check4");
- 
+
+$respostaR1 = Quiz::pegaValor("radio");
+echo $respostaR1;
 class Quiz {
 
     public static $arrayRespostas = array();
     public static $idUso;
     public static $arrayResultadoFinal = array();
-    
- 
-  
 
     public function __construct($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento) {
         Quiz::registraUso($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento);
     }
 
-    public function pegaValor($valor) {
-               
-        //return isset($_POST[$valor]) ? $_POST[$valor] : '';
-        return filter_input(INPUT_GET, $valor);
+    public function pegaValor() {
+
+        return $_POST['radio'] = (isset($_POST['radio'])) ? $_POST['radio'] : null;
     }
 
     public function salvaResposta($idResp) {
@@ -39,9 +31,9 @@ class Quiz {
         //verificar se tem como eu pegar tpViolência a partir da pergunta
         $tpViolencia = Pergunta::selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
-        if (is_null($resposta[0]['simnao'])) {            
+        if (is_null($resposta[0]['simnao'])) {
             array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $resposta[0]['IDpergunta']));
-        } else {                      
+        } else {
             if ($resposta[0]['simnao'] == 'sim') {
                 array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
             }
