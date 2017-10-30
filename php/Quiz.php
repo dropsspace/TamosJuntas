@@ -3,9 +3,6 @@
 include_once 'Pergunta.php';
 include_once 'RegistroUso.php';
 
-
-$respostaR1 = Quiz::pegaValor("radio");
-echo $respostaR1;
 class Quiz {
 
     public static $arrayRespostas = array();
@@ -27,20 +24,22 @@ class Quiz {
     }
 
     public function verificaViolência($idResp) {
-        $resposta = Pergunta::verResposta($idResp);
-        //verificar se tem como eu pegar tpViolência a partir da pergunta
-        $tpViolencia = Pergunta::selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
+        //se não vier resposta (caso de Checkbox)não faz nada 
+        if (!is_null($idResp)) {
+            $resposta = Pergunta::verResposta($idResp);
+            //verificar se tem como eu pegar tpViolência a partir da pergunta
+            $tpViolencia = Pergunta::selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
-        if (is_null($resposta[0]['simnao'])) {
-            array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $resposta[0]['IDpergunta']));
-        } else {
-            if ($resposta[0]['simnao'] == 'sim') {
+            if (is_null($resposta[0]['simnao'])) {
                 array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
+            } else {
+                if ($resposta[0]['simnao'] == 1) {
+                    array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
+                }
             }
         }
     }
 
-//Notice: Undefined index: IDpergunta in C:\xampp\htdocs\TamosJuntas\php\Quiz.php on line 43
     public function sorteiaPergunta($tpPergunta) {
 
         $perguntaselect = Pergunta::selecionaPergunta($tpPergunta);
@@ -50,12 +49,11 @@ class Quiz {
 
         $controlador = true;
         while ($controlador == true) {
-            // if (array_key_exists($pergunta['IDpergunta'], self::$arrayRespostas))
+            //verifica se ja foi perguntada 
             if (in_array($idPergunta, self::$arrayRespostas)) {
                 $perguntaselect = Pergunta::selecionaPergunta($tpPergunta);
                 $indicerrand = rand(0, count($perguntaselect) - 1);
                 $pergunta = $perguntaselect[$indicerrand];
-                //$idPergunta = $pergunta["IDpergunta"];                
             } else {
                 $controlador = false;
             }
@@ -81,8 +79,10 @@ class Quiz {
     }
 
     public function resultadoFinal() {
+        //se o array tiver identificado todas as 6 violencias 
         if ((count(self::$arrayResultadoFinal)) == 6) {
             return true;
+            //se o array tiver pergutnado todas as perguntas 
         } elseif ((count(self::$arrayRespostas)) == 54) {
             return true;
         } else {
@@ -92,17 +92,19 @@ class Quiz {
 
     public function sorteiaTipoViolencia() {
         $tpviolenciaselect = Pergunta::selecionaTpViolencia();
+
+        //porque o vetor começa em 0 e o tipo de violencia 7 n precisa sortear 
         $indicerrand = rand(0, (count($tpviolenciaselect)) - 2);
         $tpviolencia = ($tpviolenciaselect[$indicerrand]);
-        $idtpViolencia = $tpviolencia["IDtpViolencia"];
 
+        $idtpViolencia = $tpviolencia["IDtpViolencia"];
         $controlador = true;
         while ($controlador == true) {
+            //se no array tiver sido identificado esse tp de violencia
             if (in_array($idtpViolencia, self::$arrayResultadoFinal)) {
                 $tpviolenciaselect = Pergunta::selecionaTpViolencia();
                 $indicerrand = rand(0, (count($tpviolenciaselect)) - 2);
                 $tpviolencia = ($tpviolenciaselect[$indicerrand]);
-                //$idtpViolencia = $tpviolencia["IDtpViolencia"];                
             } else {
                 $controlador = false;
             }
@@ -112,20 +114,4 @@ class Quiz {
 
 }
 
-//$idUso1 = 11;
-//$idResp1 = 22;
-//
-//Quiz::salvaResposta($idUso1, $idResp1);
-//$var = Quiz::exibeArray();
-//
-//$idUso2 = 14;
-//$idResp2 = 24;
-//
-//Quiz::salvaResposta($idUso2, $idResp2);
-//$var = Quiz::exibeArray();
-//
-//
-//foreach ($var as $item) {
-//    echo "\n", $item['idUso'], "\t\t", $item['idResp'];
-//    echo"<br>";
 ?>

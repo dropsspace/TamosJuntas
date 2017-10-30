@@ -15,26 +15,24 @@ and open the template in the editor.
         include_once 'Quiz.php';
         include_once 'Pergunta.php';
 
+        //preciso iniciar uma vez só por usuaria 
         $quiz = new Quiz((date('dmyhis')), 0, 0, 0, 0);
-        $resultadoFinal = false;
 
-        //while ($resultadoFinal == false) {
         $tipoPergunta = $quiz->sorteiaTipoViolencia();
         $pergunta = $quiz->sorteiaPergunta($tipoPergunta['IDtpViolencia']);
         $resposta = $quiz->selecionaResposta($pergunta['IDpergunta']);
 
         echo($pergunta["pergunta"]);
+
         if ($pergunta["tpResposta"] == "R") {
             ?>
             <form method="post">
-                <div class = "radio">
-                    <label><input type = "radio" name = "radioSim" value="1">Sim</label>
-                </div>
-                <div class = "radio">
-                    <label><input type = "radio" name = "radioNao" value="0">Não</label>
-                </div>
-                <button class="btn btn-primary" type="submit"  onclick="myFunction()"> Próxima </button>
+
+                <div><label><input type = "radio" name = "radiobtn" value="1">Sim</label> </div>                
+                <div><label><input type = "radio" name = "radiobtn" value="0">Não</label> </div>
+                <div><button class="btn btn-primary" type="submit"  onclick=""> Próxima </button> </div>
             </form>
+
             <?php
         } else {
             ?>
@@ -52,18 +50,15 @@ and open the template in the editor.
                 <button class="btn btn-primary" type="submit"> Próxima </button>
 
             </form>
-            <?php
-        }
-//          
-        //quando selecionar e der próxima
-        $quiz->salvaResposta(aquivaiidresp);
-//                var_dump($quiz::$arrayRespostas[0]['idUso']);
-//                echo '<br>';
-//                var_dump($quiz::$arrayRespostas[0]['idResp']);
-//                
-        //$resultadoFinal = $quiz->resultadoFinal();
-        //}
-        ?>
+
+    <?php
+}
+
+//quando selecionar e der próxima
+$quiz->salvaResposta();
+//verifica se já encontrou todas violencias
+$resultadoFinal = $quiz->resultadoFinal();
+?>
 
     </body>
 </html>

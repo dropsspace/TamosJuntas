@@ -113,24 +113,20 @@
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">Teste seu Relacionamento</h2>
                         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac vulputate dui, a feugiat magna. Nulla rhoncus posuere dolor eu dictum. Sed faucibus arcu sit amet sapien auctor, ac lacinia mauris tempor. Nulla egestas orci urna, at ullamcorper ex tincidunt in. Ut ultricies mauris ac tortor facilisis tempor. In dignissim libero et turpis luctus ultrices. In commodo lobortis laoreet. Phasellus tincidunt, enim vitae fermentum laoreet, neque massa malesuada libero, non tristique lectus nibh sit amet arcu. In viverra nibh magna, at eleifend justo luctus et. Sed viverra, nibh in molestie mollis, lectus nisl mollis mauris, ac pharetra quam nisl in dolor.
+                        </p> 
+                        <p>
+                            Etiam vitae purus suscipit, tincidunt nulla vel, malesuada nulla. Morbi quis dui sit amet erat semper tempus et vitae magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer vestibulum luctus erat at mollis. Aliquam purus metus, pellentesque in velit eu, pharetra tristique orci. Aenean nec hendrerit sem. Duis quis dictum neque. Mauris hendrerit pharetra ligula, vitae hendrerit enim vulputate et. Quisque ultrices ante non diam molestie, vitae accumsan nunc aliquet. Integer nec imperdiet dolor. Mauris consectetur sapien massa, vel tincidunt lacus placerat nec. Sed pharetra commodo dui vitae euismod.
+                        </p>
                     </div>
                 </div>          
+                <div class="col-lg-12 text-center">
 
-                <?php
+                    <form id="start" action="php/Teste.php">
+                        <input type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />
 
-            include_once 'Quiz.php';
-            include_once 'Pergunta.php';
-
-            $quiz = new Quiz((date('dmyhis')), 0, 0, 0, 0);
-            $pergunta = $quiz-&gt;sorteiaPergunta(1);
-            $resposta = $quiz-&gt;selecionaResposta($pergunta[&quot;IDpergunta&quot;]);
-
-            echo($pergunta[&quot;pergunta&quot;]);
-            var_dump($resposta);
-
-                ?>
-
-            </div>
+                    </form>
+                </div>            </div>
         </section>
 
         <!--        DENUNCIE              -->
