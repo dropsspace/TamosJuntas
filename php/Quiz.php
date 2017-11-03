@@ -1,10 +1,11 @@
 <?php
-
+session_start();
 include_once 'Pergunta.php';
 include_once 'RegistroUso.php';
 
 class Quiz {
 
+    
     public static $arrayRespostas = array();
     public static $idUso;
     public static $arrayResultadoFinal = array();
@@ -69,6 +70,7 @@ class Quiz {
 
     public function registraUso($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento) {
         self::$idUso = RegistroUso::registraUso($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento);
+        return self::$idUso;        
     }
 
     public function respostasTeste() {

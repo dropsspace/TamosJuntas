@@ -122,7 +122,39 @@
                 </div>          
                 <div class="col-lg-12 text-center">
 
-                    <form id="start" action="php/Teste.php">
+                    <form action="php/IniciaSessao.php" method="post" id="start">
+                        <label for="filhos"> <input type="text" name="filhos" /></label>
+                        <label for="estuda"> <input type="text" name="estuda" /></label>
+                        <label for="trabalha"> <input type="text" name="trabalha" /></label>
+                        <label for="tpRelac"> <input type="text" name="tpRelac" /></label>
+
+                        <form action="grade.php" method="post" id="quiz">
+                            <ul id="test-questions">
+                                <li>
+                                    <div class="quiz-overlay"></div>
+                                    <h3>Você têm filhos?</h3>
+                                    <div class="mtm">
+                                        <input type="radio" name="question-1-answer" id="question-1-answers-S" value="1" />
+                                        <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="question-1-answer" id="question-1-answers-N" value="0" />
+                                        <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                                    </div>                                    
+                                </li>
+                                https://www.lockedowndesign.com/build-a-quiz-in-php-tutorial/
+                                
+                             
+                               
+                                
+                                <li>
+                                    <div class="quiz-overlay"></div>
+                                    <h3 class="anticipate">Now it’s time to see your results...</h3>
+                                    <input type="submit" value="Submit Quiz" id="submit-quiz" />
+                                </li>
+                            </ul>
+                        </form>
+
                         <input type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />
 
                     </form>
