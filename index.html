@@ -9,10 +9,8 @@
         <meta name="author" content="">
 
         <title>Estamos Juntas!</title>
-
         <!-- Bootstrap core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-
         <!-- Custom fonts for this template -->
         <link href="https://fonts.googleapis.com/css?family=Pacifico:400,700" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Satisfy:400,700" rel="stylesheet" type="text/css">
@@ -21,14 +19,11 @@
         <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
         <script src="js/jquery.min.js"></script>
         <script src="js/carrousselSlider.js"></script>
-
     </head>
 
     <body id="page-top">
-
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
@@ -105,9 +100,8 @@
                 </div>
             </div>
         </section>
-
+        
         <section id = "testeRelacionaento"> 
-
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
@@ -123,42 +117,61 @@
                 <div class="col-lg-12 text-center">
 
                     <form action="php/IniciaSessao.php" method="post" id="start">
-                        <label for="filhos"> <input type="text" name="filhos" /></label>
-                        <label for="estuda"> <input type="text" name="estuda" /></label>
-                        <label for="trabalha"> <input type="text" name="trabalha" /></label>
-                        <label for="tpRelac"> <input type="text" name="tpRelac" /></label>
 
-                        <form action="grade.php" method="post" id="quiz">
-                            <ul id="test-questions">
-                                <li>
-                                    <div class="quiz-overlay"></div>
-                                    <h3>Você têm filhos?</h3>
-                                    <div class="mtm">
-                                        <input type="radio" name="question-1-answer" id="question-1-answers-S" value="1" />
-                                        <label for="question-1-answers-A" class="fwrd labela">Sim</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" name="question-1-answer" id="question-1-answers-N" value="0" />
-                                        <label for="question-1-answers-B" class="fwrd labelb">Não</label>
-                                    </div>                                    
-                                </li>
-                                https://www.lockedowndesign.com/build-a-quiz-in-php-tutorial/
-                                
-                             
-                               
-                                
-                                <li>
-                                    <div class="quiz-overlay"></div>
-                                    <h3 class="anticipate">Now it’s time to see your results...</h3>
-                                    <input type="submit" value="Submit Quiz" id="submit-quiz" />
-                                </li>
-                            </ul>
-                        </form>
-
+                        <ul id="test-questions">
+                            <li>
+                                <div class="quiz-overlay"></div>
+                                <h3>Você têm filhos?</h3>
+                                <div class="mtm">
+                                    <input type="radio" name="filhos" id="question-1-answers" value="1" />
+                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="filhos" id="question-1-answers" value="0" />
+                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                                </div>                                    
+                            </li>
+                            <li>
+                                <div class="quiz-overlay"></div>
+                                <h3>Você estuda?</h3>
+                                <div class="mtm">
+                                    <input type="radio" name="estuda" id="question-2-answers" value="1" />
+                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="estuda" id="question-2-answers" value="0" />
+                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                                </div>                                    
+                            </li>
+                            <li>
+                                <div class="quiz-overlay"></div>
+                                <h3>Você trabalha?</h3>
+                                <div class="mtm">
+                                    <input type="radio" name="trabalha" id="question-1-answers" value="1" />
+                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="trabalha" id="question-1-answers" value="0" />
+                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                                </div>                                    
+                            </li>
+                            <li>
+                                <div class="quiz-overlay"></div>
+                                <h3>Você esta em um relacionamento:</h3>
+                                <div class="mtm">
+                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" />
+                                    <label for="question-1-answers-A" class="fwrd labela">Homoafetivo</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="tpRelac" id="question-1-answers" value="0" />
+                                    <label for="question-1-answers-B" class="fwrd labelb">Heteroafetivo</label>
+                                </div>                                    
+                            </li>
+                        </ul>
                         <input type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />
-
                     </form>
-                </div>            </div>
+                </div>  
+            </div>
         </section>
 
         <!--        DENUNCIE              -->
@@ -495,10 +508,8 @@
                                         a construção de um Brasil mais justo, igualitário e democrático, por meio da valorização
                                         da mulher e de sua inclusão no processo de desenvolvimento social, econômico, político 
                                         e cultural do País.
-
                                     </p>
                                     <p>
-
                                         Hoje, a questão de gênero está incluída nas políticas dos três níveis de Governo.
                                         Além disso, percebe-se uma crescente mobilização da sociedade civil na busca de igualdade
                                         entre homens e mulheres, em termos de direitos e obrigações. Essas mudanças têm sido 

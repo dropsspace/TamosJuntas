@@ -8,6 +8,8 @@ $_SESSION["filhos"] = $_POST["filhos"];
 $_SESSION["estuda"] = $_POST["estuda"];
 $_SESSION["trabalha"] = $_POST["trabalha"];
 $_SESSION["tpRelac"] = $_POST["tpRelac"];
+$_SESSION["respostas"] = array();
+$_SESSION["resultFinal"] = array();
         
 $_SESSION["id"] = RegistroUso::registraUso((date('dmyhis')), $_SESSION["filhos"], $_SESSION["estuda"], $_SESSION["trabalha"], $_SESSION["tpRelac"]);
 

@@ -20,7 +20,7 @@ class Quiz {
     }
 
     public function salvaResposta($idResp) {
-        array_push(self::$arrayRespostas, array("idUso" => self::$idUso, "idResp" => $idResp));
+        array_push($_SESSION["respostas"], array("idUso" => self::$idUso, "idResp" => $idResp));
         Quiz::verificaViolência($idResp);
     }
 
@@ -32,10 +32,10 @@ class Quiz {
             $tpViolencia = Pergunta::selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
             if (is_null($resposta[0]['simnao'])) {
-                array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
+                array_push($_SESSION["resultFinal"], array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
             } else {
                 if ($resposta[0]['simnao'] == 1) {
-                    array_push(self::$arrayResultadoFinal, array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
+                    array_push($_SESSION["resultFinal"], array("idUso" => self::$idUso, "idTpViolencia" => $tpViolencia));
                 }
             }
         }
@@ -51,7 +51,7 @@ class Quiz {
         $controlador = true;
         while ($controlador == true) {
             //verifica se ja foi perguntada 
-            if (in_array($idPergunta, self::$arrayRespostas)) {
+            if (in_array($idPergunta, $_SESSION["respostas"])) {
                 $perguntaselect = Pergunta::selecionaPergunta($tpPergunta);
                 $indicerrand = rand(0, count($perguntaselect) - 1);
                 $pergunta = $perguntaselect[$indicerrand];
@@ -75,17 +75,17 @@ class Quiz {
 
     public function respostasTeste() {
 
-        foreach (self::$arrayRespostas as $arrayFinal) {
+        foreach ($_SESSION["respostas"] as $arrayFinal) {
             RespostasTeste::resgistaResult($arrayFinal['idUso'], $arrayFinal['idResp']);
         }
     }
 
     public function resultadoFinal() {
         //se o array tiver identificado todas as 6 violencias 
-        if ((count(self::$arrayResultadoFinal)) == 6) {
+        if ((count($_SESSION["resultFinal"])) == 6) {
             return true;
             //se o array tiver pergutnado todas as perguntas 
-        } elseif ((count(self::$arrayRespostas)) == 54) {
+        } elseif ((count($_SESSION["respostas"])) == 54) {
             return true;
         } else {
             return false;
@@ -103,7 +103,7 @@ class Quiz {
         $controlador = true;
         while ($controlador == true) {
             //se no array tiver sido identificado esse tp de violencia
-            if (in_array($idtpViolencia, self::$arrayResultadoFinal)) {
+            if (in_array($idtpViolencia, $_SESSION["resultFinal"])) {
                 $tpviolenciaselect = Pergunta::selecionaTpViolencia();
                 $indicerrand = rand(0, (count($tpviolenciaselect)) - 2);
                 $tpviolencia = ($tpviolenciaselect[$indicerrand]);
