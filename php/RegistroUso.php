@@ -14,11 +14,13 @@ class RegistroUso {
     }
 
     public function selectIdUso() {
-        ConectaBD::conectarBanco();
-        $sql = "SELECT `IDuso` FROM `tbuso` GROUP BY `IDuso` ORDER BY `IDuso` DESC LIMIT 1";
-        $resultado = ConectaBD::realizarSelect($sql);
-        ConectaBD::fecharBanco();
-        return $resultado;
+       ConectaBD::conectarBanco();
+       $sql = "SELECT `IDuso` FROM `tbuso` GROUP BY `IDuso` ORDER BY `IDuso` DESC LIMIT 1";
+       $resultado = ConectaBD::realizarSelect($sql); 
+       ConectaBD::fecharBanco();
+       
+       //retorna somente o id
+       return $resultado[0]['IDuso'];
     }
 
 }

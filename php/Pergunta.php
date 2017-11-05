@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once("ConectaBD.php");
 
 class Pergunta {
@@ -16,6 +16,7 @@ class Pergunta {
       
         ConectaBD::conectarBanco();
         $sql = "SELECT IDtpViolencia FROM tbpergunta WHERE IDpergunta = '$idPergunta'";
+         $resultado = ConectaBD::realizarSelect($sql);
         ConectaBD::fecharBanco();
         return $resultado;
     }
@@ -26,7 +27,18 @@ class Pergunta {
         $sql = "SELECT * FROM tbtipoviolencia";
         $resultado = ConectaBD::realizarSelect($sql);
         ConectaBD::fecharBanco();
-        return $resultado;
+        
+       return $resultado;
+    }
+       public function verPergunta($idPergunta) {
+      
+        ConectaBD::conectarBanco();
+        $sql = "SELECT * FROM tbpergunta WHERE  IDpergunta= '$idPergunta'";
+        $resultado = ConectaBD::realizarSelect($sql);
+        ConectaBD::fecharBanco();
+        
+       return $resultado;
+       
     }
 
     public function selecionaRespostas($idPergunta) {
