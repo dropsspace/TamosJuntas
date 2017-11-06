@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
-    <?php session_destroy(); ?>
+   
     <head>
 
         <meta charset="utf-8">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <!-- Header -->
         <header class="masthead">
             <div class="container">
@@ -100,7 +100,11 @@
                 </div>
             </div>
         </section>
+        <!---- Imagem !---->
+        <section id="pic1">
 
+        </section>
+        
         <section id = "testeRelacionaento"> 
             <div class="container">
                 <div class="row">
@@ -122,7 +126,7 @@
                             <li>
                                 <div class="quiz-overlay"></div>
                                 <h3>Você têm filhos?</h3>
-                                <div class="mtm">
+                                <div>
                                     <input type="radio" name="filhos" id="question-1-answers" value="1" />
                                     <label for="question-1-answers-A" class="fwrd labela">Sim</label>
                                 </div>
@@ -134,7 +138,7 @@
                             <li>
                                 <div class="quiz-overlay"></div>
                                 <h3>Você estuda?</h3>
-                                <div class="mtm">
+                                <div>
                                     <input type="radio" name="estuda" id="question-2-answers" value="1" />
                                     <label for="question-1-answers-A" class="fwrd labela">Sim</label>
                                 </div>
@@ -144,9 +148,9 @@
                                 </div>                                    
                             </li>
                             <li>
-                                <div class="quiz-overlay"></div>
+
                                 <h3>Você trabalha?</h3>
-                                <div class="mtm">
+                                <div>
                                     <input type="radio" name="trabalha" id="question-1-answers" value="1" />
                                     <label for="question-1-answers-A" class="fwrd labela">Sim</label>
                                 </div>
@@ -158,14 +162,15 @@
                             <li>
                                 <div class="quiz-overlay"></div>
                                 <h3>Você esta em um relacionamento:</h3>
-                                <div class="mtm">
-                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Homoafetivo</label>
-                                </div>
                                 <div>
                                     <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/>
                                     <label for="question-1-answers-B" class="fwrd labelb">Heteroafetivo</label>
-                                </div>                                    
+                                </div>    
+                                <div>
+                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" />
+                                    <label for="question-1-answers-A" class="fwrd labela">Homoafetivo</label>
+                                </div>
+
                             </li>
                         </ul>
                         <input type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />
@@ -174,12 +179,11 @@
             </div>
 
         </section>
+  <!--        IMAGEM              -->
+    <section id="pic2">
 
+        </section>
         
-
-
-
-
         <!--        DENUNCIE              -->
         <section class="bg-light" id="portfolio">
             <div class="container">
@@ -655,7 +659,7 @@
                 </div>
             </div>
         </div>
-     
+
     </body>
     <!-- Custom styles for this template -->
     <link href="css/empodera.css" rel="stylesheet">
