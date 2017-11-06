@@ -21,6 +21,7 @@ and open the template in the editor.
             $tipoPergunta = Quiz::validaTipoViolencia();
             //adiciona +1 no contador de perguntas para tpViolencia
             Quiz::controlador($idViolencia);
+            
             $pergunta = Quiz::validaPergunta($tipoPergunta);            
             $resposta = Quiz::selecionaResposta($pergunta[0]['IDpergunta']);
             

@@ -1,5 +1,6 @@
 <?php
-include_once('RegistroUso.php');
+include_once '/RegistroUso.php';
+
 //Armazeno duas informações na sessão do usuário: se ele está logado, e o login de acesso. A partir desse momento, qualquer página habilitada a trabalhar com variáveis de sessão, poderá resgatar essas variáveis, manipulá-las, sobreescrevê-las etc.
 
 $_SESSION["logado"] = TRUE;
@@ -11,11 +12,10 @@ $_SESSION["tpRelac"] = $_POST["tpRelac"];
 //armazena perguntas perguntadas
 $_SESSION["perguntas"] = array();
 //armazena respostas respondidas
-$_SESSION["respostas"] = array();
-//armazena tp violencias identificadas pelas respostas 
-$_SESSION["violencia"] = array();  
+$_SESSION["respostas"] = array(); 
 //armazena violências que já apresentaram todas perguntas;
 $_SESSION["violenciasFinalizadas"] = array();
+$_SESSION["violenciasIdentificadas"] = array();
 //contador de perguntas 
 $_SESSION["controlador"] = array(1 =>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0);
 //controla a repetição do teste

@@ -5,37 +5,25 @@ include_once 'RegistroUso.php';
 
 class Quiz {
 
-    public static $arrayRespostas = array();
-    public static $arrayResultadoFinal = array();
-    public static $x;
-
-    public function pegaValor() {
-
-        return $_POST['radio'] = (isset($_POST['radio'])) ? $_POST['radio'] : null;
-    }
-
     public function salvaResposta($idResp) {
         array_push($_SESSION["respostas"], $idResp);
     }
 
     public function verificaViolência($idResp) {
-        //se não vier resposta (caso de Checkbox)não faz nada 
 
         if (!is_null($idResp)) {
-            $resposta = Pergunta::verResposta($idResp);
+            $resposta = Pergunta::vevoivrResposta($idResp);
             //verificar se tem como eu pegar tpViolência a partir da pergunta
             $tpViolencia = Pergunta::selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
-            if (is_null($resposta[0]['simnao'])) {               
-                //salva no array de violencias identificadas
-                array_push($_SESSION["violencia"], $tpViolencia[0]["IDtpViolencia"]);
-                //combina no array de violencias finalizadas
+            if (is_null($resposta[0]['simnao'])) {
+                //salva no array de violencias identificadas e no arrau de finalizadas  
                 array_push($_SESSION["violenciasFinalizadas"] = $tpViolencia[0]["IDtpViolencia"]);
+                array_push($_SESSION["violenciasIdentificadas"] = $tpViolencia[0]["IDtpViolencia"]);
             } else {
-                if ($resposta[0]['simnao'] == "Sim") {                  
-                    //array_push($_SESSION["violencia"], array("idUso" => $_SESSION["id"], "idTpViolencia" => $tpViolencia[0]["IDtpViolencia"]));
-                    array_push($_SESSION["violencia"], $tpViolencia[0]["IDtpViolencia"]);
+                if ($resposta[0]['simnao'] == "Sim") {
                     array_push($_SESSION["violenciasFinalizadas"] = $tpViolencia[0]["IDtpViolencia"]);
+                    array_push($_SESSION["violenciasIdentificadas"] = $tpViolencia[0]["IDtpViolencia"]);
                 }
             }
         }
@@ -47,8 +35,8 @@ class Quiz {
         $tipoCerto = false;
 
         while ($tipoCerto == false)
+        //se houverem perguntas perguntadas
             if (count($_SESSION["perguntas"]) > 0) {
-
                 for ($x = 0; $x < count($_SESSION["perguntas"]); $x++) {
                     if ($idPergunta == ($_SESSION["perguntas"][$x])) {
                         $idPergunta = Quiz::sorteiaPergunta($tpPergunta);
@@ -91,14 +79,8 @@ class Quiz {
 
     public function resultadoFinal() {
         //se o array tiver identificado todas as 6 violencias 
-        if ((count($_SESSION["violencia"])) == 6) {
+        if ((count($_SESSION["violenciasFinalizadas"])) == 6) {
             return true;
-
-            //se o array tiver pergutnado todas as perguntas 
-        } elseif ((count($_SESSION["respostas"])) == 54) {
-            return true;
-
-            //senão não terminou 
         } else {
             return false;
         }
@@ -112,19 +94,18 @@ class Quiz {
         while ($tipoCerto == false) {
             //se não houver nenhuma violencia finalizada pode sortear qualquer uma 
             //se houver 6 identificadas encerrou o programa
-                if (count($_SESSION["violenciasFinalizadas"]) > 0 && count($_SESSION["violenciasFinalizadas"])<7) {
-                        for ($y = 0; $y < count($_SESSION["violenciasFinalizadas"]); $y++) {
-                            //se houver alguma violenciafinalizada compara o IDtpViolencia com as do vetor
-                            if (($idtpViolencia == ($_SESSION["violenciasFinalizadas"][$y]))) {
-                                $idtpViolencia = Quiz::sorteiaTipoViolencia();
-                                $tipoCerto = false;
-                                break;
-                            } else {
-                                $tipoCerto = true;
-                            }
-                        }
+            if (count($_SESSION["violenciasFinalizadas"]) > 0 && count($_SESSION["violenciasFinalizadas"]) < 7) {
+                for ($y = 0; $y < count($_SESSION["violenciasFinalizadas"]); $y++) {
+                    //se houver alguma violenciafinalizada compara o IDtpViolencia com as do vetor
+                    if (($idtpViolencia == ($_SESSION["violenciasFinalizadas"][$y]))) {
+                        $idtpViolencia = Quiz::sorteiaTipoViolencia();
+                        $tipoCerto = false;
+                        break;
+                    } else {
+                        $tipoCerto = true;
                     }
-                
+                }
+            }
         }
         return $idtpViolencia;
     }

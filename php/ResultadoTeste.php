@@ -1,26 +1,15 @@
 <?php
 
-include_once 'ConectaBD.php';
+include_once 'RegistraResultadoTeste.php';
 
-class ResultadoTeste {
+for ($y = 0; $y < count($_SESSION["respostas"]); $y++) {
 
-    public function resgistaResult($idUso, $idResp) {
-        ConectaBD::conectarBanco();
-        $sql = "INSERT INTO `dbempodera`.`tbresultadoresposta` (`IDuso`, `IDresposta`) VALUES ('$idUso', '$idResp');";
-        ConectaBD::realizarInsert($sql);
-        ConectaBD::fecharBanco();
-    }
+    RegistraResultadoTeste::registaRespostas($_SESSION["id"], $_SESSION["respostas"][$y]);
+}
 
-    public function registraConclusao($idUso, $idTpViolencia) {
-        
-        ConectaBD::conectarBanco();
-        $sql = "INSERT INTO `dbempodera`.`tbresultadoconclusao` (`IDuso`, `IDtpViolencia`) VALUES ('$idUso', '$idTpViolencia');";
-        $resultado = ConectaBD::realizarInsert($sql);
-        ConectaBD::fecharBanco();
-    }
+for ($y = 0; $y < count($_SESSION["violenciasIdentificadas"]); $y++) {
 
-   
-
+    RegistraResultadoTeste::registaRespostas($_SESSION["id"], $_SESSION["violenciasIdentificadas"][$y]);
 }
 
 ?>
