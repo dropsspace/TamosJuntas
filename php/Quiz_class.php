@@ -1,9 +1,14 @@
 <?php
 
-include_once 'Pergunta.php';
-include_once 'RegistroUso.php';
-
 class Quiz {
+
+    private $mysql;
+    private $pergunta;
+    
+    public function __construct($mysql) {
+        $this->mysql = $mysql;
+        $this->pergunta = new Pergunta($mysql);
+    }
 
     public function salvaResposta($idResp) {
         array_push($_SESSION["respostas"], $idResp);
@@ -12,9 +17,9 @@ class Quiz {
     public function verificaViolência($idResp) {
 
         if (!is_null($idResp)) {
-            $resposta = Pergunta::vevoivrResposta($idResp);
+            $resposta = $this->pergunta->vevoivrResposta($idResp);
             //verificar se tem como eu pegar tpViolência a partir da pergunta
-            $tpViolencia = Pergunta::selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
+            $tpViolencia = $this->pergunta->selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
             if (is_null($resposta[0]['simnao'])) {
                 //salva no array de violencias identificadas e no arrau de finalizadas  
@@ -31,15 +36,16 @@ class Quiz {
 
     public function validaPergunta($tpPergunta) {
 
-        $idPergunta = Quiz::sorteiaPergunta($tpPergunta);
+        $idPergunta = $this->sorteiaPergunta($tpPergunta);
         $tipoCerto = false;
 
         while ($tipoCerto == false)
+            
         //se houverem perguntas perguntadas
             if (count($_SESSION["perguntas"]) > 0) {
                 for ($x = 0; $x < count($_SESSION["perguntas"]); $x++) {
                     if ($idPergunta == ($_SESSION["perguntas"][$x])) {
-                        $idPergunta = Quiz::sorteiaPergunta($tpPergunta);
+                        $idPergunta = $this->sorteiaPergunta($tpPergunta);
                         $tipoCerto = false;
                         break;
                     } else {
@@ -52,13 +58,13 @@ class Quiz {
 
         array_push($_SESSION["perguntas"], $idPergunta);
         //falta controlar quando todas de um tipo x forem perguntadas 
-        $pergunta = Pergunta::verPergunta($idPergunta);
+        $pergunta = $this->pergunta->verPergunta($idPergunta);
 
         return $pergunta;
     }
 
     public function sorteiaPergunta($tpPergunta) {
-        $perguntaselect = Pergunta::selecionaPergunta($tpPergunta);
+        $perguntaselect = $this->pergunta->selecionaPergunta($tpPergunta);
         $indicerrand = rand(0, (count($perguntaselect)) - 1);
         $pergunta = ($perguntaselect[$indicerrand]);
         $idPergunta = $pergunta["IDpergunta"];
@@ -66,7 +72,7 @@ class Quiz {
     }
 
     public function selecionaResposta($idPergunta) {
-        $resposta = Pergunta::selecionaRespostas($idPergunta);
+        $resposta = $this->pergunta->selecionaRespostas($idPergunta);
         return $resposta;
     }
 
@@ -88,17 +94,18 @@ class Quiz {
 
     public function validaTipoViolencia() {
 
-        $idtpViolencia = Quiz::sorteiaTipoViolencia();
+        $idtpViolencia = $this->sorteiaTipoViolencia();
         $tipoCerto = false;
 
         while ($tipoCerto == false) {
+            echo 'loop 2';
             //se não houver nenhuma violencia finalizada pode sortear qualquer uma 
             //se houver 6 identificadas encerrou o programa
             if (count($_SESSION["violenciasFinalizadas"]) > 0 && count($_SESSION["violenciasFinalizadas"]) < 7) {
                 for ($y = 0; $y < count($_SESSION["violenciasFinalizadas"]); $y++) {
                     //se houver alguma violenciafinalizada compara o IDtpViolencia com as do vetor
                     if (($idtpViolencia == ($_SESSION["violenciasFinalizadas"][$y]))) {
-                        $idtpViolencia = Quiz::sorteiaTipoViolencia();
+                        $idtpViolencia = $this->sorteiaTipoViolencia();
                         $tipoCerto = false;
                         break;
                     } else {
@@ -111,7 +118,7 @@ class Quiz {
     }
 
     function sorteiaTipoViolencia() {
-        $tpviolenciaselect = Pergunta::selecionaTpViolencia();
+        $tpviolenciaselect = $this->pergunta->selecionaTpViolencia();
         //porque o vetor começa em 0 e o tipo de violencia 7 n precisa sortear 
         $indicerrand = rand(0, (count($tpviolenciaselect)) - 2);
         $tpviolencia = ($tpviolenciaselect[$indicerrand]);

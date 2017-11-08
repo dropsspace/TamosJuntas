@@ -1,26 +1,29 @@
 <?php
 
-include_once("ConectaBD.php");
-
 class RegistroUso {
+   
+   private $mysql;
+   
+   public function __construct($mysql) {
+      $this->mysql = $mysql;
+   }
 
     public function registraUso($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento) {
-        ConectaBD::conectarBanco();
         $sql = "INSERT INTO `dbempodera`.`tbuso` (`dataAcesso`, `filhos`, `estuda`, `trabalha`, `tpRelacionamento`) VALUES ('$dtaAcesso','$filhos','$estuda','$trabalha','$tpRelacionamento');";
-        ConectaBD::realizarInsert($sql);
-        ConectaBD::fecharBanco();
-        $idUso = RegistroUso::selectIdUso();
+        mysqli_query($mysql->link, $sql);  
+        $idUso = $this->selectIdUso();
         return $idUso;
     }
 
     public function selectIdUso() {
-       ConectaBD::conectarBanco();
        $sql = "SELECT `IDuso` FROM `tbuso` GROUP BY `IDuso` ORDER BY `IDuso` DESC LIMIT 1";
-       $resultado = ConectaBD::realizarSelect($sql); 
-       ConectaBD::fecharBanco();
+       $rs = $this->mysql->query($sql);
+       $dados = mysqli_fetch_array($rs, MYSQLI_ASSOC);
+        
+       return utf8_encode($dados['IDuso']);
+        
+        
        
-       //retorna somente o id
-       return $resultado[0]['IDuso'];
     }
 
 }

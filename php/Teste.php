@@ -1,3 +1,8 @@
+<?php
+include("config.php");
+
+$quiz = new Quiz($mysql);
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -12,19 +17,19 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        include_once 'Quiz.php';
-        include_once 'Pergunta.php';
+        #include_once 'Quiz.php';
+        #include_once 'Pergunta.php';
         print_r($_SESSION["terminouTeste"]);
-       
+
         if ($_SESSION["terminouTeste"] == false) {
             
-            $tipoPergunta = Quiz::validaTipoViolencia();
+            $tipoPergunta = $quiz->validaTipoViolencia();
             //adiciona +1 no contador de perguntas para tpViolencia
-            Quiz::controlador($idViolencia);
-            
-            $pergunta = Quiz::validaPergunta($tipoPergunta);            
-            $resposta = Quiz::selecionaResposta($pergunta[0]['IDpergunta']);
-            
+            $quiz->controlador($idViolencia);
+
+            $pergunta = $quiz->validaPergunta($tipoPergunta);
+            $resposta = $quiz->selecionaResposta($pergunta[0]['IDpergunta']);
+
 
             echo($pergunta[0]["pergunta"]);
             if ($pergunta[0]["tpResposta"] == "R") {
@@ -65,7 +70,7 @@ and open the template in the editor.
             }
             print_r($_SESSION);
         } else {
-                       
+
             header("Location:ExibeResult.php");
         }
         ?>
