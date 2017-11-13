@@ -3,35 +3,69 @@ include("config.php");
 
 $quiz = new Quiz($mysql);
 ?>
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
+
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Estamos Juntas!</title>
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom fonts for this template -->
+        <link href="https://fonts.googleapis.com/css?family=Pacifico:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Satisfy:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing Script:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/carrousselSlider.js"></script>
     </head>
+
     <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Estamos Juntas!</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="">Sobre o Projeto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#testeRelacionaento">Teste seu Relacionamento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">Denuncie</a>
+                        </li>            
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <?php
         #include_once 'Quiz.php';
         #include_once 'Pergunta.php';
-        print_r($_SESSION["terminouTeste"]);
+        $quiz->validateste();
 
         if ($_SESSION["terminouTeste"] == false) {
-            
-            $tipoPergunta = $quiz->validaTipoViolencia();
-            //adiciona +1 no contador de perguntas para tpViolencia
-            $quiz->controlador($idViolencia);
 
+            $tipoPergunta = $quiz->validaTipoViolencia();
             $pergunta = $quiz->validaPergunta($tipoPergunta);
             $resposta = $quiz->selecionaResposta($pergunta[0]['IDpergunta']);
-
-
-            echo($pergunta[0]["pergunta"]);
+            $quiz->controlador($pergunta[0]['IDtpViolencia']);
+            echo $pergunta[0]["pergunta"];
             if ($pergunta[0]["tpResposta"] == "R") {
                 ?>
                 <form action = "ValidaResposta.php" method="post">
@@ -70,9 +104,26 @@ and open the template in the editor.
             }
             print_r($_SESSION);
         } else {
-
-            header("Location:ExibeResult.php");
+            echo 'acabou';
+            //header("Location:ExibeResult.php");
         }
         ?>
     </body>
+    <!-- Custom styles for this template -->
+    <link href="css/empodera.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/empodera.js"></script>
 </html>

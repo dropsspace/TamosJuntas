@@ -7,9 +7,9 @@ setlocale(LC_ALL, 'pt_BR');
 
 
 $connection = array(
-    'host' => '127.0.0.1',
-    'user' => 'sistema',
-    'pass' => '10741961',
+    'host' => 'localhost',
+    'user' => 'root',
+    'pass' => '',
     'db' => 'dbempodera'
 );
 

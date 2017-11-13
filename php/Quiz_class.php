@@ -4,31 +4,40 @@ class Quiz {
 
     private $mysql;
     private $pergunta;
-    
+
     public function __construct($mysql) {
         $this->mysql = $mysql;
         $this->pergunta = new Pergunta($mysql);
     }
 
+    public function validateste() {
+       
+        if ((count($_SESSION["violenciasFinalizadas"]) == 6)) {           
+            $_SESSION["terminouTeste"] = true;
+        }
+    }
+
     public function salvaResposta($idResp) {
+        echo'salvou resposta';
         array_push($_SESSION["respostas"], $idResp);
     }
 
     public function verificaViolência($idResp) {
 
         if (!is_null($idResp)) {
-            $resposta = $this->pergunta->vevoivrResposta($idResp);
+
+            $resposta = $this->pergunta->verResposta($idResp);       
             //verificar se tem como eu pegar tpViolência a partir da pergunta
             $tpViolencia = $this->pergunta->selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
-            if (is_null($resposta[0]['simnao'])) {
+            if (is_null($resposta[0]['simnao'])) {                
                 //salva no array de violencias identificadas e no arrau de finalizadas  
-                array_push($_SESSION["violenciasFinalizadas"] = $tpViolencia[0]["IDtpViolencia"]);
-                array_push($_SESSION["violenciasIdentificadas"] = $tpViolencia[0]["IDtpViolencia"]);
-            } else {
+                array_push($_SESSION["violenciasFinalizadas"], $tpViolencia[0]["IDtpViolencia"]);
+                array_push($_SESSION["violenciasIdentificadas"], $tpViolencia[0]["IDtpViolencia"]);
+            } else {               
                 if ($resposta[0]['simnao'] == "Sim") {
-                    array_push($_SESSION["violenciasFinalizadas"] = $tpViolencia[0]["IDtpViolencia"]);
-                    array_push($_SESSION["violenciasIdentificadas"] = $tpViolencia[0]["IDtpViolencia"]);
+                    array_push($_SESSION["violenciasFinalizadas"], $tpViolencia[0]["IDtpViolencia"]);
+                    array_push($_SESSION["violenciasIdentificadas"], $tpViolencia[0]["IDtpViolencia"]);
                 }
             }
         }
@@ -36,30 +45,29 @@ class Quiz {
 
     public function validaPergunta($tpPergunta) {
 
-        $idPergunta = $this->sorteiaPergunta($tpPergunta);
         $tipoCerto = false;
-
-        while ($tipoCerto == false)
-            
-        //se houverem perguntas perguntadas
-            if (count($_SESSION["perguntas"]) > 0) {
+        $encontrou = false;
+        
+        if (count($_SESSION["perguntas"]) > 0) {
+            while ($tipoCerto == false) {
+                $encontrou = false;
+                $idPergunta = $this->sorteiaPergunta($tpPergunta);
+                //se houverem perguntas perguntadas
                 for ($x = 0; $x < count($_SESSION["perguntas"]); $x++) {
                     if ($idPergunta == ($_SESSION["perguntas"][$x])) {
-                        $idPergunta = $this->sorteiaPergunta($tpPergunta);
-                        $tipoCerto = false;
-                        break;
-                    } else {
-                        $tipoCerto = true;
+                        $encontrou = true;
                     }
                 }
-            } else {
-                $tipoCerto = true;
+                if ($encontrou) {
+                    $tipoCerto = false;
+                } else {
+                    $tipoCerto = true;
+                }
             }
-
+        }
         array_push($_SESSION["perguntas"], $idPergunta);
         //falta controlar quando todas de um tipo x forem perguntadas 
         $pergunta = $this->pergunta->verPergunta($idPergunta);
-
         return $pergunta;
     }
 
@@ -92,82 +100,75 @@ class Quiz {
         }
     }
 
-    public function validaTipoViolencia() {
-
-        $idtpViolencia = $this->sorteiaTipoViolencia();
+    public function validaTipoViolencia() {       
         $tipoCerto = false;
 
-        while ($tipoCerto == false) {
-            echo 'loop 2';
-            //se não houver nenhuma violencia finalizada pode sortear qualquer uma 
-            //se houver 6 identificadas encerrou o programa
-            if (count($_SESSION["violenciasFinalizadas"]) > 0 && count($_SESSION["violenciasFinalizadas"]) < 7) {
+        if (count($_SESSION["violenciasFinalizadas"]) < 6) {
+            while ($tipoCerto == false) {
+                $encontrou = false;
+                $idtpViolencia = $this->sorteiaTipoViolencia();
                 for ($y = 0; $y < count($_SESSION["violenciasFinalizadas"]); $y++) {
                     //se houver alguma violenciafinalizada compara o IDtpViolencia com as do vetor
                     if (($idtpViolencia == ($_SESSION["violenciasFinalizadas"][$y]))) {
-                        $idtpViolencia = $this->sorteiaTipoViolencia();
-                        $tipoCerto = false;
-                        break;
-                    } else {
-                        $tipoCerto = true;
+                        $encontrou = true;
                     }
+                }
+                if ($encontrou) {
+                    $tipoCerto = false;
+                } else {
+                    $tipoCerto = true;
                 }
             }
         }
         return $idtpViolencia;
     }
 
-    function sorteiaTipoViolencia() {
+    public function sorteiaTipoViolencia() {
+
         $tpviolenciaselect = $this->pergunta->selecionaTpViolencia();
         //porque o vetor começa em 0 e o tipo de violencia 7 n precisa sortear 
         $indicerrand = rand(0, (count($tpviolenciaselect)) - 2);
         $tpviolencia = ($tpviolenciaselect[$indicerrand]);
         $idtpViolencia = $tpviolencia["IDtpViolencia"];
-
         return $idtpViolencia;
     }
 
-    function controlador($idViolencia) {
+    function controlador($idViolencia) {       
         if ($idViolencia == 1) {
             //se a pergunta for do tipo 1, controlador recebe +1 
-            $_SESSION["controlador"][1] + 1;
+            $_SESSION["controlador"][1] = $_SESSION["controlador"][1] + 1;
             if ($_SESSION["controlador"][1] == 5) {
-                array_push($_SESSION["violenciasFinalizadas"] = $idViolencia);
+                array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
-        } elseif ($idViolencia == 2) {
-            //se a pergunta for do tipo 1, controlador recebe +1 
-            $_SESSION["controlador"][2] + 1;
+        }
+        if ($idViolencia == 2) {
+            $_SESSION["controlador"][2] = $_SESSION["controlador"][2] + 1;
             if ($_SESSION["controlador"][2] == 7) {
-
-                array_push($_SESSION["violenciasFinalizadas"] = $idViolencia);
+                array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
-        } elseif ($idViolencia == 3) {
-            //se a pergunta for do tipo 1, controlador recebe +1 
-            $_SESSION["controlador"][3] + 1;
+        }
+        if ($idViolencia == 3) {
+            $_SESSION["controlador"][3] = $_SESSION["controlador"][3] + 1;
             if ($_SESSION["controlador"][3] == 4) {
-
-                array_push($_SESSION["violenciasFinalizadas"] = $idViolencia);
-            } elseif ($idViolencia == 4) {
-                //se a pergunta for do tipo 1, controlador recebe +1 
-                $_SESSION["controlador"][4] + 1;
-                if ($_SESSION["controlador"][4] == 3) {
-
-                    array_push($_SESSION["violenciasFinalizadas"] = $idViolencia);
-                } elseif ($idViolencia == 5) {
-                    //se a pergunta for do tipo 1, controlador recebe +1 
-                    $_SESSION["controlador"][5] + 1;
-                    if ($_SESSION["controlador"][5] == 22) {
-
-                        array_push($_SESSION["violenciasFinalizadas"] = $idViolencia);
-                    } elseif ($idViolencia == 6) {
-                        //se a pergunta for do tipo 1, controlador recebe +1 
-                        $_SESSION["controlador"][6] + 1;
-                        if ($_SESSION["controlador"][6] == 13) {
-
-                            array_push($_SESSION["violenciasFinalizadas"] = $idViolencia);
-                        }
-                    }
-                }
+                array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
+            }
+        }
+        if ($idViolencia == 4) {
+            $_SESSION["controlador"][4] = $_SESSION["controlador"][4] + 1;
+            if ($_SESSION["controlador"][4] == 3) {
+                array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
+            }
+        }
+        if ($idViolencia == 5) {
+            $_SESSION["controlador"][5] = $_SESSION["controlador"][5] + 1;
+            if ($_SESSION["controlador"][5] == 22) {
+                array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
+            }
+        }
+        if ($idViolencia == 6) {
+            $_SESSION["controlador"][6] = $_SESSION["controlador"][6] + 1;
+            if ($_SESSION["controlador"][6] == 13) {
+                array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
         }
     }
