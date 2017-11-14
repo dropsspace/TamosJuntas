@@ -14,7 +14,7 @@ $quiz = new Quiz($mysql);
 
         <title>Estamos Juntas!</title>
         <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
         <!-- Custom fonts for this template -->
         <link href="https://fonts.googleapis.com/css?family=Pacifico:400,700" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Satisfy:400,700" rel="stylesheet" type="text/css">
@@ -28,7 +28,6 @@ $quiz = new Quiz($mysql);
     </head>
 
     <body>
-
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">Estamos Juntas!</a>
@@ -54,6 +53,7 @@ $quiz = new Quiz($mysql);
                 </div>
             </div>
         </nav>
+        <div
         <?php
         #include_once 'Quiz.php';
         #include_once 'Pergunta.php';
@@ -68,62 +68,64 @@ $quiz = new Quiz($mysql);
             echo $pergunta[0]["pergunta"];
             if ($pergunta[0]["tpResposta"] == "R") {
                 ?>
-                <form action = "ValidaResposta.php" method="post">
-                    <?php $var1 = $resposta[0]['IDresposta']; ?>
-                    <?php $var2 = $resposta[1]['IDresposta']; ?>
+                    <form action = "ValidaResposta.php" method="post">
+                            <?php $var1 = $resposta[0]['IDresposta']; ?>
+                            <?php $var2 = $resposta[1]['IDresposta']; ?>
 
-                    <div>
-                        <label><input type = "radio" name = "radiobtn" value="<?php echo $var1 ?>"><?php echo($resposta[0]['simnao']); ?></label> 
-                    </div>                
-                    <div>
-                        <label><input type = "radio" name = "radiobtn" value="<?php echo $var2 ?>"><?php echo($resposta[1]['simnao']); ?></label>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary" type="submit"  onclick=""> Próxima </button> </div>
-                </form>
+                        <div>
+                            <label><input type = "radio" name = "radiobtn" value="<?php echo $var1 ?>"><?php echo($resposta[0]['simnao']); ?></label> 
+                        </div>                
+                        <div>
+                            <label><input type = "radio" name = "radiobtn" value="<?php echo $var2 ?>"><?php echo($resposta[1]['simnao']); ?></label>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" type="submit"  onclick=""> Próxima </button> </div>
+                    </form>
 
-                <?php
+                    <?php
+                } else {
+                    ?>
+                    <form action = "ValidaResposta.php" method="post">
+
+                        <div class = "checkbox">
+                            <label><input type = "checkbox" name = "check1" value="<?php echo $resposta[0]['IDresposta']; ?>"><?php echo $resposta[0]['resposta']; ?></label>
+                        </div>
+                        <div class = "checkbox">
+                            <label><input type = "checkbox" name = "check2" value="<?php echo $resposta[1]['IDresposta']; ?>"><?php echo $resposta[1]['resposta']; ?></label>
+                        </div>            
+                        <div class = "checkbox">
+                            <label><input type = "checkbox" name = "check3" value="<?php echo $resposta[2]['IDresposta']; ?>"><?php echo $resposta[2]['resposta']; ?></label>
+                        </div>
+                        <button class="btn btn-primary" type="submit"> Próxima </button>
+
+                    </form>
+
+                    <?php
+                }
+                print_r($_SESSION);
             } else {
-                ?>
-                <form action = "ValidaResposta.php" method="post">
-
-                    <div class = "checkbox">
-                        <label><input type = "checkbox" name = "check1" value="<?php echo $resposta[0]['IDresposta']; ?>"><?php echo $resposta[0]['resposta']; ?></label>
-                    </div>
-                    <div class = "checkbox">
-                        <label><input type = "checkbox" name = "check2" value="<?php echo $resposta[1]['IDresposta']; ?>"><?php echo $resposta[1]['resposta']; ?></label>
-                    </div>            
-                    <div class = "checkbox">
-                        <label><input type = "checkbox" name = "check3" value="<?php echo $resposta[2]['IDresposta']; ?>"><?php echo $resposta[2]['resposta']; ?></label>
-                    </div>
-                    <button class="btn btn-primary" type="submit"> Próxima </button>
-
-                </form>
-
-                <?php
+                echo 'acabou';
+                //header("Location:ExibeResult.php");
             }
-            print_r($_SESSION);
-        } else {
-            echo 'acabou';
-            //header("Location:ExibeResult.php");
-        }
-        ?>
+            ?>
+        </div>
+
     </body>
     <!-- Custom styles for this template -->
-    <link href="css/empodera.css" rel="stylesheet">
+    <link href="../css/empodera.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/popper/popper.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Contact form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/empodera.js"></script>
+    <script src="../js/empodera.js"></script>
 </html>
