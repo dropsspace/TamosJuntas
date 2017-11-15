@@ -1,4 +1,7 @@
 <?php
+include("config.php");
+
+$registra = new Quiz($mysql);
 
 include_once 'RegistraResultadoTeste.php';
 
