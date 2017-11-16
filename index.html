@@ -134,62 +134,109 @@
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">Teste seu Relacionamento</h2>
                         <h3 class="section-subheading text-muted">Verifique se vocês está em um Relacionamento Abusivo</h3>
-                      
+
                     </div>
                 </div>          
                 <div class="col-lg-12 text-center">
 
-                    <form action="php/IniciaSessao.php" method="post" id="start">
+                    <h3 id="title" class="w3-center">Perguntas Iniciais</h3>
 
-                             
-                                <div class="quiz-overlay"></div>
-                                <h3>Você têm filhos?</h3>
-                                 <div>
-                                    <input type="radio" name="filhos" id="question-1-answers" value="0" checked/>
-                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
-                                </div>  
-                                <div>
-                                    <input type="radio" name="filhos" id="question-1-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
-                                </div>
-                                                                 
-                           
-                                <div class="quiz-overlay"></div>
-                                <h3>Você estuda?</h3>
-                                <div>
-                                    <input type="radio" name="estuda" id="question-2-answers" value="0" checked />
-                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
-                                </div>   
-                                <div>
-                                    <input type="radio" name="estuda" id="question-2-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
-                                </div>
-                           
-                                <h3>Você trabalha?</h3> 
-                                <div>
-                                    <input type="radio" name="trabalha" id="question-1-answers" value="0" checked/>
-                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
-                                </div>  
-                                <div>
-                                    <input type="radio" name="trabalha" id="question-1-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
-                                </div>
-                                                                 
-                           
-                                <div class="quiz-overlay"></div>
-                                <h3>Você esta em um relacionamento:</h3>
-                                <div>
-                                    <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/>
-                                    <label for="question-1-answers-B" class="fwrd labelb">Heteroafetivo</label>
-                                </div>    
-                                <div>
-                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Homoafetivo</label>
-                                </div>
+                    <div class="w3-content w3-display-container">
+                        <div  class="mySlides">
+                            <h3>Você têm filhos?</h3>
+                            <div>
+                                <input type="radio" name="filhos" id="question-1-answers" value="0" checked/>
+                                <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                            </div>  
+                            <div>
+                                <input type="radio" name="filhos" id="question-1-answers" value="1" />
+                                <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                            </div>
+                        </div>
+                        <div  class="mySlides">
+                            <h3>Você estuda?</h3>
+                            <div>
+                                <input type="radio" name="estuda" id="question-2-answers" value="0" checked />
+                                <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                            </div>   
+                            <div>
+                                <input type="radio" name="estuda" id="question-2-answers" value="1" />
+                                <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                            </div>
+                        </div>
+                        <div  class="mySlides">
+                            <h3>Você trabalha?</h3> 
+                            <div>
+                                <input type="radio" name="trabalha" id="question-1-answers" value="0" checked/>
+                                <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                            </div>  
+                            <div>
+                                <input type="radio" name="trabalha" id="question-1-answers" value="1" />
+                                <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                            </div>
+                        </div>
+                        <div  class="mySlides">
+                            <h3>Você esta em um relacionamento:</h3>
+                            <div>
+                                <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/>
+                                <label for="question-1-answers-B" class="fwrd labelb">Heteroafetivo</label>
+                            </div>    
+                            <div>
+                                <input type="radio" name="tpRelac" id="question-1-answers" value="1" />
+                                <label for="question-1-answers-A" class="fwrd labela">Homoafetivo</label>
+                            </div>
+                        </div>
 
-                       
-                        <input type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />
-                    </form>
+                        <div id ='btnnext'>
+
+                            <button id ='btnnext' class="btn btn-primary index-btn"  onclick="plusDivs(1)">&#10095;</button>
+
+                        </div>
+                    </div>
+                    <div  id="teste">
+                        <form action="php/IniciaSessao.php" method="post" id="start">
+                            <input type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />
+                        </form>
+                    </div>
+
+                    <script>
+                        var slideIndex = 1;
+                        showDivs(slideIndex);
+
+                        function plusDivs(n) {
+                            showDivs(slideIndex += n);
+                        }
+
+                        function showDivs(n) {
+                            var i;
+                            var x = document.getElementsByClassName("mySlides");
+                            if (n < x.length) {
+                                document.getElementById('teste').style.visibility = 'hidden';
+                            }
+                            if (n > x.length) {
+                                hide();
+                                show();
+                            }
+                            if (n < 1) {
+                                slideIndex = x.length
+                            }
+                            for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "none";
+                            }
+                            x[slideIndex - 1].style.display = "block";
+                        }
+                        function hide() {
+                            document.getElementById('btnnext').style.visibility = 'hidden';
+                            document.getElementById('title').style.visibility = 'hidden';
+                        }
+
+                        function show() {
+                            document.getElementById('teste').style.visibility = 'visible';
+                        }
+
+
+                    </script>
+
                 </div>  
             </div>
 

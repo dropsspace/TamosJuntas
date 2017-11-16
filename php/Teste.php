@@ -38,78 +38,76 @@ $quiz = new Quiz($mysql);
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="">Sobre o Projeto</a>
-                        </li>
+                            <a class="nav-link js-scroll-trigger " href="../index.html">Sobre o Projeto</a>
+                        </li>     
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#testeRelacionaento">Teste seu Relacionamento</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#portfolio">Denuncie</a>
-                        </li>            
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
-                        </li>
+                            <a class="nav-link js-scroll-trigger" href="#teste">Teste Seu Relacionamento</a>
+                        </li>  
                     </ul>
                 </div>
             </div>
-        </nav>
-        <div
-        <?php
-        #include_once 'Quiz.php';
-        #include_once 'Pergunta.php';
-        $quiz->validateste();
+        </nav>  
+        
+        <section id ="teste">
+            <div>
+             
+                <?php
+                #include_once 'Quiz.php';
+                #include_once 'Pergunta.php';
+                $quiz->validateste();
 
-        if ($_SESSION["terminouTeste"] == false) {
-
-            $tipoPergunta = $quiz->validaTipoViolencia();
-            $pergunta = $quiz->validaPergunta($tipoPergunta);
-            $resposta = $quiz->selecionaResposta($pergunta[0]['IDpergunta']);
-            $quiz->controlador($pergunta[0]['IDtpViolencia']);
-            echo $pergunta[0]["pergunta"];
-            if ($pergunta[0]["tpResposta"] == "R") {
-                ?>
-                    <form action = "ValidaResposta.php" method="post">
+                if ($_SESSION["terminouTeste"] == false) {
+                    echo "<h3> Pergunta "  .(count($_SESSION["perguntas"]) +1)."</h2>";
+                    $tipoPergunta = $quiz->validaTipoViolencia();
+                    $pergunta = $quiz->validaPergunta($tipoPergunta);
+                    $resposta = $quiz->selecionaResposta($pergunta[0]['IDpergunta']);
+                    $quiz->controlador($pergunta[0]['IDtpViolencia']);
+             
+                    echo "<h4 class=subheading>". $pergunta[0]["pergunta"] ."</h3>";
+                    if ($pergunta[0]["tpResposta"] == "R") {
+                        ?>
+                        <form action = "ValidaResposta.php" method="post">
                             <?php $var1 = $resposta[0]['IDresposta']; ?>
                             <?php $var2 = $resposta[1]['IDresposta']; ?>
 
-                        <div>
-                            <label><input type = "radio" name = "radiobtn" value="<?php echo $var1 ?>"><?php echo($resposta[0]['simnao']); ?></label> 
-                        </div>                
-                        <div>
-                            <label><input type = "radio" name = "radiobtn" value="<?php echo $var2 ?>"><?php echo($resposta[1]['simnao']); ?></label>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary" type="submit"  onclick=""> Próxima </button> </div>
-                    </form>
+                            <div>
+                                <label><input type = "radio" checked name = "radiobtn" value= "<?php echo $var1 ?>"><?php echo($resposta[0]['simnao']); ?>  </label> 
+                            </div>                
+                            <div>
+                                <label><input type = "radio" name = "radiobtn" value="<?php echo $var2 ?>"><?php echo($resposta[1]['simnao']); ?></label>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary" type="submit"  onclick=""> Próxima </button> </div>
+                        </form>
 
-                    <?php
+                        <?php
+                    } else {
+                        ?>
+                        <form action = "ValidaResposta.php" method="post">
+
+                            <div class = "checkbox">
+                                <label><input type = "checkbox" name = "check1" value="<?php echo $resposta[0]['IDresposta']; ?>"><?php echo $resposta[0]['resposta']; ?></label>
+                            </div>
+                            <div class = "checkbox">
+                                <label><input type = "checkbox" name = "check2" value="<?php echo $resposta[1]['IDresposta']; ?>"><?php echo $resposta[1]['resposta']; ?></label>
+                            </div>            
+                            <div class = "checkbox">
+                                <label><input type = "checkbox" name = "check3" value="<?php echo $resposta[2]['IDresposta']; ?>"><?php echo $resposta[2]['resposta']; ?></label>
+                            </div>
+                            <button class="btn btn-primary" type="submit"> Próxima </button>
+
+                        </form>
+
+                        <?php
+                    }
+                    print_r($_SESSION);
                 } else {
-                    ?>
-                    <form action = "ValidaResposta.php" method="post">
-
-                        <div class = "checkbox">
-                            <label><input type = "checkbox" name = "check1" value="<?php echo $resposta[0]['IDresposta']; ?>"><?php echo $resposta[0]['resposta']; ?></label>
-                        </div>
-                        <div class = "checkbox">
-                            <label><input type = "checkbox" name = "check2" value="<?php echo $resposta[1]['IDresposta']; ?>"><?php echo $resposta[1]['resposta']; ?></label>
-                        </div>            
-                        <div class = "checkbox">
-                            <label><input type = "checkbox" name = "check3" value="<?php echo $resposta[2]['IDresposta']; ?>"><?php echo $resposta[2]['resposta']; ?></label>
-                        </div>
-                        <button class="btn btn-primary" type="submit"> Próxima </button>
-
-                    </form>
-
-                    <?php
+                    echo 'acabou';
+                    //header("Location:ExibeResult.php");
                 }
-                print_r($_SESSION);
-            } else {
-                echo 'acabou';
-                //header("Location:ExibeResult.php");
-            }
-            ?>
-        </div>
-
+                ?>
+            </div>
+        </section>
     </body>
     <!-- Custom styles for this template -->
     <link href="../css/empodera.css" rel="stylesheet">
