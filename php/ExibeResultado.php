@@ -49,56 +49,50 @@ include("config.php");
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
+                        <?php
+                        $risco = false;
+                        $saudavel = false;
+                        $abusivo = false;
+                        $patrimonial = false;
+                        $sexual = false;
+                        $fisica = false;
+                        $moral = false;
+                        $psicologica = false;
+
+                        print_r($_SESSION);
+                        if (count($_SESSION["violenciasIdentificadas"] > 0)) {
+                            for ($y = 0; $y < count($_SESSION["violenciasIdentificadas"]); $y++) {
+                                if ($_SESSION["violenciasIdentificadas"][$y] == 5 || $_SESSION["violenciasIdentificadas"][$y] == 4 || $_SESSION["violenciasIdentificadas"][$y] == 3 || $_SESSION["violenciasIdentificadas"][$y] == 2 || $_SESSION["violenciasIdentificadas"][$y] == 1) {
+                                    $abusivo = true;
+                                    if ($_SESSION["violenciasIdentificadas"][$y] == 1) {
+                                        $patrimonial = true;
+                                    }
+                                    if ($_SESSION["violenciasIdentificadas"][$y] == 2) {
+                                        $sexual = true;
+                                    }
+                                    if ($_SESSION["violenciasIdentificadas"][$y] == 3) {
+                                        $fisica = true;
+                                    }
+                                    if ($_SESSION["violenciasIdentificadas"][$y] == 4) {
+                                        $moral = true;
+                                    }
+                                    if ($_SESSION["violenciasIdentificadas"][$y] == 5) {
+                                        $psicologica = true;
+                                    }
+                                } else if ($_SESSION["violenciasIdentificadas"][$y] == 6) {
+                                    $risco = true;
+                                }
+                            }
+                        } else {
+                            $saudavel = true;
+                        }
+                        ?>
                         <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th class=bg-warning>
-                                        <h2> Resultado: </h2>
-                                    </th>
-                                </tr>
-                            </thead>
 
                             <?php
-                            $risco = false;
-                            $saudavel = false;
-                            $abusivo = false;
-                            $patrimonial = false;
-                            $sexual = false;
-                            $fisica = false;
-                            $moral = false;
-                            $psicologica = false;
-
-                            print_r($_SESSION);
-                            if (count($_SESSION["violenciasIdentificadas"] > 0)) {
-                                for ($y = 0; $y < count($_SESSION["violenciasIdentificadas"]); $y++) {
-                                    if ($_SESSION["violenciasIdentificadas"][$y] == 5 || $_SESSION["violenciasIdentificadas"][$y] == 4 || $_SESSION["violenciasIdentificadas"][$y] == 3 || $_SESSION["violenciasIdentificadas"][$y] == 2 || $_SESSION["violenciasIdentificadas"][$y] == 1) {
-                                        $abusivo = true;
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 1) {
-                                            $patrimonial = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 2) {
-                                            $sexual = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 3) {
-                                            $fisica = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 4) {
-                                            $moral = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 5) {
-                                            $psicologica = true;
-                                        }
-                                    } else if ($_SESSION["violenciasIdentificadas"][$y] == 6) {
-                                        $risco = true;
-                                    }
-                                }
-                            } else {
-                                $saudavel = true;
-                            }
-
                             if ($abusivo) {
+                                echo'<thead><tr><th class=bg-warning><h2> Resultado: Relacionamento Abusivo </h2></th></tr></thead>';
                                 echo '<tr><th><img class="img-fluid" src="../img/result/abusivo.png" alt=""></th></tr>';
-                                echo '<tr><td class=bg-warning><h4>Relacionamento Abusivo</td></tr>';
                                 echo '<tr><td><h5>Uma ou mais respostas referem-se à ações que configuram crime de violência contra a mulher conforme a lei 11.540/16:</h5></th></tr>';
 
                                 if ($patrimonial) {
@@ -121,15 +115,14 @@ include("config.php");
                                     echo '<tr><th class=bg-warning>Violencia psicológica</th></tr>';
                                     echo '<tr><th>Esta violência é entendida como qualquer conduta que lhe cause dano emocional e diminuição da auto-estima ou que lhe prejudique e perturbe o pleno desenvolvimento ou que vise degradar ou controlar suas ações, comportamentos, crenças e decisões, mediante ameaça, constrangimento, humilhação, manipulação, isolamento, vigilância constante, perseguição contumaz, insulto, chantagem, ridicularização, exploração e limitação do direito de ir e vir ou qualquer outro meio que lhe cause prejuízo à saúde psicológica e à autodeterminação;</th></tr>';
                                 }
-                            }
-                            if ($risco) {
+                            } else if ($risco) {
+                                echo'<thead><tr><th class=bg-warning><h2> Resultado: Relacionamento de Risco </h2></th></tr></thead>';
                                 echo '<tr><th><img class="img-fluid" src="../img/result/risco.png" alt=""></th></tr>';
-                                echo '<tr><th>Relacionamento de Risco</th></tr>';
                                 echo '<tr><th>É hora de olhar atentamente pois seu relacionamento apresenta sinais de risco, com atitudes que não são saudáveis!</th></tr>';
                             }
                             if ($saudavel) {
+                                echo'<thead><tr><th class=bg-warning><h2> Resultado: Relacionamento Saudável </h2></th></tr></thead>';
                                 echo '<tr><td> <img class="img-fluid" src="../img/result/saudavel.png"></td></tr>';
-                                echo '<tr><td align=left class=bg-warning><h4>Relacionamento Saudável</h4></td></tr>';
                                 echo '<tr><td align=left><p class="section-result text-muted">Parabéns, você respondeu ao teste e não foram identificados traços de um relacionamento abusivo.'
                                 . ' Não deixe de compartilhar este teste com suas amigas e mandar seu feedback na página inicial! </p></td></tr>';
                             }
