@@ -1,6 +1,9 @@
-<?php
-include("config.php");
-?>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html lang="pt">
 
     <head>
@@ -62,62 +65,43 @@ include("config.php");
                             $risco = false;
                             $saudavel = false;
                             $abusivo = false;
-                            $patrimonial = false;
-                            $sexual = false;
-                            $fisica = false;
-                            $moral = false;
-                            $psicologica = false;
 
-                            print_r($_SESSION);
                             if (count($_SESSION["violenciasIdentificadas"] > 0)) {
+                                echo 'entrou';
                                 for ($y = 0; $y < count($_SESSION["violenciasIdentificadas"]); $y++) {
-                                    if ($_SESSION["violenciasIdentificadas"][$y] == 5 || $_SESSION["violenciasIdentificadas"][$y] == 4 || $_SESSION["violenciasIdentificadas"][$y] == 3 || $_SESSION["violenciasIdentificadas"][$y] == 2 || $_SESSION["violenciasIdentificadas"][$y] == 1) {
+                                    if ($_SESSION["violenciasIdentificadas"][x] == 5 || $_SESSION["violenciasIdentificadas"][x] == 4 || $_SESSION["violenciasIdentificadas"][x] == 3 || $_SESSION["violenciasIdentificadas"][x] == 2 || $_SESSION["violenciasIdentificadas"][x] == 1) {
                                         $abusivo = true;
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 1) {
-                                            $patrimonial = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 2) {
-                                            $sexual = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 3) {
-                                            $fisica = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 4) {
-                                            $moral = true;
-                                        }
-                                        if ($_SESSION["violenciasIdentificadas"][$y] == 5) {
-                                            $psicologica = true;
-                                        }
-                                    } else if ($_SESSION["violenciasIdentificadas"][$y] == 6) {
+                                    } else if ($_SESSION["violenciasIdentificadas"][y] == 6) {
                                         $risco = true;
                                     }
                                 }
                             } else {
+                                 echo 'entrou else';
                                 $saudavel = true;
                             }
 
+
+
                             if ($abusivo) {
                                 echo '<tr><th><img class="img-fluid" src="../img/result/abusivo.png" alt=""></th></tr>';
-                                echo '<tr><td class=bg-warning><h4>Relacionamento Abusivo</td></tr>';
-                                echo '<tr><td><h5>Uma ou mais respostas referem-se à ações que configuram crime de violência contra a mulher conforme a lei 11.540/16:</h5></th></tr>';
-
-                                if ($patrimonial) {
-                                    echo '<tr><th class=bg-warning><h5>Violência patrimonial</h5></th></tr>';
-                                    echo '<tr><th><p class="item-intro">Esta violência é entendida como qualquer conduta que configure retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens, valores e direitos ou recursos econômicos, incluindo os destinados a satisfazer suas necessidades;</p></th></tr>';
+                                echo '<tr><th><h4 class="section-heading">Foi Identificado um Relacionamento Relacionamento Abusivo pois uma ou mais respostas refere-se à ações que configuram crime de violência contra a mulher conforme a lei 11.540/16: </h4></th></tr>';
+                                if ($_SESSION["violenciasIdentificadas"][0] == 1) {
+                                    echo '<tr><th class=bg-warning>Violencia patrimonial</th></tr>';
+                                    echo '<tr><th>Esta violência é entendida como qualquer conduta que configure retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens, valores e direitos ou recursos econômicos, incluindo os destinados a satisfazer suas necessidades;</th></tr>';
                                 }
-                                if ($sexual) {
+                                if ($_SESSION["violenciasIdentificadas"][1] == 2) {
                                     echo '<tr><th class=bg-warning> Violencia sexual</th></tr>';
                                     echo '<tr><th>Esta violência é entendida como qualquer conduta que a constranja a presenciar, a manter ou a participar de relação sexual não desejada, mediante intimidação, ameaça, coação ou uso da força; que a induza a comercializar ou a utilizar, de qualquer modo, a sua sexualidade, que a impeça de usar qualquer método contraceptivo ou que a force ao matrimônio, à gravidez, ao aborto ou à prostituição, mediante coação, chantagem, suborno ou manipulação; ou que limite ou anule o exercício de seus direitos sexuais e reprodutivos;</th></tr>';
                                 }
-                                if ($fisica) {
+                                if ($_SESSION["violenciasIdentificadas"][2] == 3) {
                                     echo '<tr><th class=bg-warning>Violencia física </th></tr>';
                                     echo '<tr><th>Esta violência é entendida como qualquer conduta que ofenda sua integridade ou saúde corporal</th></tr>';
                                 }
-                                if ($moral) {
+                                if ($_SESSION["violenciasIdentificadas"][3] == 4) {
                                     echo '<tr><th class=bg-warning>Violencia moral</th></tr>';
                                     echo '<tr><th>Esta violência é entendida como qualquer conduta que configure calúnia, difamação ou injúria.</th></tr>';
                                 }
-                                if ($psicologica) {
+                                if ($_SESSION["violenciasIdentificadas"][4] == 5) {
                                     echo '<tr><th class=bg-warning>Violencia psicológica</th></tr>';
                                     echo '<tr><th>Esta violência é entendida como qualquer conduta que lhe cause dano emocional e diminuição da auto-estima ou que lhe prejudique e perturbe o pleno desenvolvimento ou que vise degradar ou controlar suas ações, comportamentos, crenças e decisões, mediante ameaça, constrangimento, humilhação, manipulação, isolamento, vigilância constante, perseguição contumaz, insulto, chantagem, ridicularização, exploração e limitação do direito de ir e vir ou qualquer outro meio que lhe cause prejuízo à saúde psicológica e à autodeterminação;</th></tr>';
                                 }
@@ -134,10 +118,9 @@ include("config.php");
                                 . ' Não deixe de compartilhar este teste com suas amigas e mandar seu feedback na página inicial! </p></td></tr>';
                             }
                             ?> 
-
                             <tr>
                                 <td align=right>   
-                                    <a href="ExibeRespostas.php" class="btn btn-primary">Ver Minhas Respostas</a>
+                                    <a href="ExibeRespostas.html" class="btn btn-primary">Ver Minhas Respostas</a>
                                     <a href="../index.html" class="btn btn-primary">Testar Novamente</a>
                                 </td>
                             </tr>

@@ -8,6 +8,10 @@ class Mysql {
         //Conecta ao banco e seleciona a base
         $this->link = $this->connect($dados_connect);
         $this->selectdb($this->link, $dados_connect['db']);
+        mysql_query("SET NAMES 'utf8'");
+        mysql_query('SET character_set_connection=utf8');
+        mysql_query('SET character_set_client=utf8');
+        mysql_query('SET character_set_results=utf8');
     }
 
     //Função de retorna erro
