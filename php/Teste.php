@@ -28,7 +28,7 @@ $quiz = new Quiz($mysql);
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #222222;" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="../index.html">Estamos Juntas!</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,6 @@ $quiz = new Quiz($mysql);
                             <form action = "ValidaResposta.php" method="post">
                                 <?php $var1 = $resposta[0]['IDresposta']; ?>
                                 <?php $var2 = $resposta[1]['IDresposta']; ?>
-
                                 <tr>
                                     <td> 
                                         <label><input type = "radio" checked name = "radiobtn" value= "<?php echo $var1 ?>"><?php echo($resposta[0]['simnao']); ?>  </label> 

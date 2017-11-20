@@ -17,6 +17,11 @@ class RegistraResultadoTeste {
         $sql = "INSERT INTO `dbempodera`.`tbconclusao` (`idUso`, `idtpViolencia`) VALUES('$idUso', '$idViolencia');";
         mysqli_query($this->mysql->link, $sql);
     }
+    
+    public function getRespostas($idUso, $idViolencia) {
+        $sql = "INSERT INTO `dbempodera`.`tbconclusao` (`idUso`, `idtpViolencia`) VALUES('$idUso', '$idViolencia');";
+        mysqli_query($this->mysql->link, $sql);
+    }
 
 }
 ?>
