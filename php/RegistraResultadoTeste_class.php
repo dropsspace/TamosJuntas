@@ -17,10 +17,15 @@ class RegistraResultadoTeste {
         $sql = "INSERT INTO `dbempodera`.`tbconclusao` (`idUso`, `idtpViolencia`) VALUES('$idUso', '$idViolencia');";
         mysqli_query($this->mysql->link, $sql);
     }
-    
-    public function getRespostas($idUso, $idViolencia) {
-        $sql = "INSERT INTO `dbempodera`.`tbconclusao` (`idUso`, `idtpViolencia`) VALUES('$idUso', '$idViolencia');";
-        mysqli_query($this->mysql->link, $sql);
+
+    public function getRespostas($idUso) {
+        $sql = "SELECT * FROM `dbempodera`.`tbresultadoresposta` WHERE `IDuso` = '$idUso';";
+        $rs = $this->mysql->query($sql);
+        while ($dados = mysqli_fetch_assoc($rs)) {
+            $assoc[] = $dados;
+        }
+
+        return $assoc;
     }
 
 }

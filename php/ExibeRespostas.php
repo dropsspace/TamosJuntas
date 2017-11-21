@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+include("config.php");
+$resultado = new RegistraResultadoTeste($mysql);
+$perguntas = new Pergunta($mysql);
+?>
 <html lang="pt">
 
     <head>
@@ -42,7 +41,7 @@ and open the template in the editor.
                             <a class="nav-link js-scroll-trigger" href="../index.html">Início</a>
                         </li>                                                           
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#services">Meu Resultado</a>
+                            <a class="nav-link js-scroll-trigger" href="#services">Minhas Respostas</a>
                         </li>
                     </ul>
                 </div>
@@ -55,34 +54,68 @@ and open the template in the editor.
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th class=bg-warning>
-                                        <h2> Resultado: </h2>
-                                    </th>
-                                </tr>
+                                    <th class=bg-warning><h4>Pergunta</h4></th>
+                                    <th class=bg-warning><h4>Resposta</h4></th>
+                            </tr>
                             </thead>
-                            <?php
-                          
-                           
-                            ?>
+                            <tbody>
+                                <?php
+                                $rs = $resultado->getRespostas($_SESSION["id"]);
+
+                                for ($x = 0; $x < count($rs); $x++) {
+                                    $resposta = $perguntas->verResposta($rs[$x]["IdResposta"]);
+                                    //print_r($resposta);
+                                    //echo '<br>';
+                                    $pergunta = $perguntas->verPergunta($resposta[0]["IDpergunta"]);
+                                    ?>
+
+                                    <tr>
+                                        <td>
+                                            <?php
+                                            echo utf8_encode($pergunta[0]["pergunta"]);
+                                            ?>
+                                        </td>
+
+                                        <?php
+                                        if ($pergunta[0]["tpResposta"] == "R") {
+                                            if ($resposta[0]['simnao'] == "Sim") {
+                                                echo '<td class=bg-danger><p>' . utf8_encode($resposta[0]['simnao']);
+                                            } else {
+                                                echo '<td class=bg-success><p>' . utf8_encode($resposta[0]['simnao']);
+                                            }
+                                        } else {
+                                            echo '<td class=bg-danger><p>' . utf8_encode($resposta[0]['resposta']);
+                                        }
+                                    }
+                                    ?>
+                                        </p></td>
+                                </tr>                           
+                            </tbody>
                         </table>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                
+    </body>
+    <!-- Custom styles for this template -->
+    <link href="../css/empodera.css" rel="stylesheet">
 
-                </body>
-                <!-- Custom styles for this template -->
-                <link href="../css/empodera.css" rel="stylesheet">
-                <!-- Bootstrap core JavaScript -->
-                <script src="../vendor/jquery/jquery.min.js"></script>
-                <script src="../vendor/popper/popper.min.js"></script>
-                <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-                <!-- Plugin JavaScript -->
-                <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-                <!-- Contact form JavaScript -->
-                <script src="../js/jqBootstrapValidation.js"></script>
-                <script src="../js/contact_me.js"></script>
-                <!-- Custom scripts for this template -->
-                <script src="../js/empodera.js"></script>
-                </html>
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/popper/popper.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../js/empodera.js"></script>
+
+</html>
+
 

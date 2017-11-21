@@ -50,6 +50,7 @@ class Pergunta {
         while ($dados = mysqli_fetch_assoc($rs)) {
             $assoc[] = $dados;
         }
+
         return $assoc;
     }
 

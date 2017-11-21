@@ -61,7 +61,7 @@ $quiz = new Quiz($mysql);
                                 $pergunta = $quiz->validaPergunta($tipoPergunta);
                                 $resposta = $quiz->selecionaResposta($pergunta[0]['IDpergunta']);
                                 $quiz->controlador($pergunta[0]['IDtpViolencia']);
-                                echo "<tbody><tr><td><h4 class=subheading>" . $pergunta[0]["pergunta"] . "</h3></td></tr>";
+                                echo "<tbody><tr><td><h4 class=subheading>" . utf8_encode($pergunta[0]["pergunta"]) . "</h3></td></tr>";
                                 if ($pergunta[0]["tpResposta"] == "R") {
                                     ?>
                             <form action = "ValidaResposta.php" method="post">
@@ -69,12 +69,12 @@ $quiz = new Quiz($mysql);
                                 <?php $var2 = $resposta[1]['IDresposta']; ?>
                                 <tr>
                                     <td> 
-                                        <label><input type = "radio" checked name = "radiobtn" value= "<?php echo $var1 ?>"><?php echo($resposta[0]['simnao']); ?>  </label> 
+                                        <label><input type = "radio" checked name = "radiobtn" value= "<?php echo $var1 ?>"><?php echo utf8_encode($resposta[0]['simnao']); ?>  </label> 
                                     </td> 
                                 </tr> 
                                 <tr>
                                     <td> 
-                                        <label><input type = "radio" name = "radiobtn" value="<?php echo $var2 ?>"><?php echo($resposta[1]['simnao']); ?></label>
+                                        <label><input type = "radio" name = "radiobtn" value="<?php echo $var2 ?>"><?php echo utf8_encode($resposta[1]['simnao']); ?></label>
                                     </td> 
                                 </tr>  
                                 <tr>
@@ -91,17 +91,17 @@ $quiz = new Quiz($mysql);
                             <form action = "ValidaResposta.php" method="post">
                                 <tr>
                                     <td> 
-                                        <label><input type = "checkbox" name = "check1" value="<?php echo $resposta[0]['IDresposta']; ?>"><?php echo $resposta[0]['resposta']; ?></label>
+                                        <label><input type = "checkbox" name = "check1" value="<?php echo $resposta[0]['IDresposta']; ?>"><?php echo utf8_encode($resposta[0]['resposta']); ?></label>
                                     </td> 
                                 </tr>  
                                 <tr>
                                     <td> 
-                                        <label><input type = "checkbox" name = "check2" value="<?php echo $resposta[1]['IDresposta']; ?>"><?php echo $resposta[1]['resposta']; ?></label>
+                                        <label><input type = "checkbox" name = "check2" value="<?php echo $resposta[1]['IDresposta']; ?>"><?php echo utf8_encode ($resposta[1]['resposta']); ?></label>
                                     </td> 
                                 </tr>
                                 <tr>
                                     <td> 
-                                        <label><input type = "checkbox" name = "check3" value="<?php echo $resposta[2]['IDresposta']; ?>"><?php echo $resposta[2]['resposta']; ?></label>
+                                        <label><input type = "checkbox" name = "check3" value="<?php echo $resposta[2]['IDresposta']; ?>"><?php echo utf8_encode($resposta[2]['resposta']); ?></label>
                                     </td> 
                                 </tr>
                                 <tr>

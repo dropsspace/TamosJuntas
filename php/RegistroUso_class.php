@@ -20,10 +20,7 @@ class RegistroUso {
        $rs = $this->mysql->query($sql);
        $dados = mysqli_fetch_array($rs, MYSQLI_ASSOC);
         
-       return utf8_encode($dados['IDuso']);
-        
-        
-       
+       return utf8_encode($dados['IDuso']);        
     }
 
 }

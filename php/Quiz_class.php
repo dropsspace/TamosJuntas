@@ -11,8 +11,8 @@ class Quiz {
     }
 
     public function validateste() {
-       
-        if ((count($_SESSION["violenciasFinalizadas"]) == 6)) {           
+
+        if ((count($_SESSION["violenciasFinalizadas"]) == 6)) {
             $_SESSION["terminouTeste"] = true;
         }
     }
@@ -26,15 +26,15 @@ class Quiz {
 
         if (!is_null($idResp)) {
 
-            $resposta = $this->pergunta->verResposta($idResp);       
+            $resposta = $this->pergunta->verResposta($idResp);
             //verificar se tem como eu pegar tpViolência a partir da pergunta
             $tpViolencia = $this->pergunta->selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
-            if (is_null($resposta[0]['simnao'])) {                
+            if (is_null($resposta[0]['simnao'])) {
                 //salva no array de violencias identificadas e no arrau de finalizadas  
                 array_push($_SESSION["violenciasFinalizadas"], $tpViolencia[0]["IDtpViolencia"]);
                 array_push($_SESSION["violenciasIdentificadas"], $tpViolencia[0]["IDtpViolencia"]);
-            } else {               
+            } else {
                 if ($resposta[0]['simnao'] == "Sim") {
                     array_push($_SESSION["violenciasFinalizadas"], $tpViolencia[0]["IDtpViolencia"]);
                     array_push($_SESSION["violenciasIdentificadas"], $tpViolencia[0]["IDtpViolencia"]);
@@ -47,7 +47,7 @@ class Quiz {
 
         $tipoCerto = false;
         $encontrou = false;
-        
+
         if (count($_SESSION["perguntas"]) > 0) {
             while ($tipoCerto == false) {
                 $encontrou = false;
@@ -64,6 +64,8 @@ class Quiz {
                     $tipoCerto = true;
                 }
             }
+        } else {
+            $idPergunta = $this->sorteiaPergunta($tpPergunta);
         }
         array_push($_SESSION["perguntas"], $idPergunta);
         //falta controlar quando todas de um tipo x forem perguntadas 
@@ -100,7 +102,7 @@ class Quiz {
         }
     }
 
-    public function validaTipoViolencia() {       
+    public function validaTipoViolencia() {
         $tipoCerto = false;
 
         if (count($_SESSION["violenciasFinalizadas"]) < 6) {
@@ -133,7 +135,7 @@ class Quiz {
         return $idtpViolencia;
     }
 
-    function controlador($idViolencia) {       
+    function controlador($idViolencia) {
         if ($idViolencia == 1) {
             //se a pergunta for do tipo 1, controlador recebe +1 
             $_SESSION["controlador"][1] = $_SESSION["controlador"][1] + 1;
