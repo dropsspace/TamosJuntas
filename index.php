@@ -87,59 +87,57 @@ session_destroy();
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">Vamos falar sobre Violência contra a mulher?</h2>
-                        <h4>
-                            A violência praticada contra a mulher, constitui-se em uma das principais formas de 
-                            violação de seus direitos, atingindo o direito à vida, à saúde e à integridade física                        
-                            e é um problema público, que em todas suas formas, 
-                            atinge mulheres de diferentes classes sociais, escolaridades, regiões ou etnias.                           
-                        </h4>
+                        <h3 class="section-subheading">
+                            <br>A violência praticada contra a mulher, constitui-se em uma das principais formas de 
+                            violação de seus direitos, atingindo o direito à vida, à saúde e à integridade física.                        
+                            É um problema público, que em todas suas formas e práticas, atinge mulheres de diferentes classes sociais, escolaridades, regiões ou etnias.   
+                            
+                            <br>Fonte: <a href="http://www.spm.gov.br/assuntos/ouvidoria-da-mulher/pacto-nacional/politica-nacional-enfrentamento-a-violencia-versao-final.pdf"> Política Nacional de Enfrentamento à Violência contra as Mulheres, 2011. </a>                        
+                        </h3>
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h1 class="service-heading">147.691</h1>
+                       <div>
+                        <img class="img-circle img-fluid " src="img/logos/hora.png">
+                        </div>
+                        <h3 class="service-heading">4 minutos</h3>
                         <p class="text-muted">	
-                            Foi o número de registros anual de internações de mulheres vítimas de violência no Brasil. 
+                            Um novo registro de atendimento a mulher vítima de violência a cada 4 minutos no Brasil.
                         </p>
-                        <p class="text-muted">Fonte: Mapa da Violência, 2015.
-
+                        <p class="text-muted"><a href="https://apublica.org/wp-content/uploads/2016/03/MapaViolencia_2015_mulheres.pdf">Fonte: Mapa da Violência, 2015.
+                            </a></p>
                     </div>
                     <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h1 class="service-heading">405</h1>
+                        <div>
+                        <img class="img-circle img-fluid " src="img/logos/internacoes.png">
+                        </div>
+                        <h3 class="service-heading">405 Registros</h3>
                         <p class="text-muted">
-                            É o número de registros de internações de mulheres vítimas de violência por dia no Brasil. 
+                            São regitrados no SUS por dia 405 internações de mulheres vítimas de violência no Brasil. 
                         </p>
-                        <p class="text-muted">Fonte: Mapa da Violência, 2015.
-                        </p>
+                        <p class="text-muted"><a href="https://apublica.org/wp-content/uploads/2016/03/MapaViolencia_2015_mulheres.pdf">Fonte: Mapa da Violência, 2015.
+                            </a></p>
                     </div>
                     <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h1 class="service-heading">3</h1>
-                        <p class="text-muted">É a quantidade de feminicídios diários registrados no Brasil. 
+                         <div>
+                        <img class="img-circle img-fluid " src="img/logos/mortes.png">
+                        </div>
+                        <h3 class="service-heading">3 Femicídios </h3>
+                        <p class="text-muted">Estatísticas apontam que são registrados 3 homicídios de mulheres no Brasil. 
                         </p>
-                        <p class="text-muted">Fonte: Mapa da Violência, 2015.
-                        </p>
+                        <p class="text-muted"><a href="https://apublica.org/wp-content/uploads/2016/03/MapaViolencia_2015_mulheres.pdf">Fonte: Mapa da Violência, 2015.
+                            </a></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h4>
-                            A violência praticada contra a mulher, constitui-se em uma das principais formas de 
+                        <h3 class="section-subheading">
+                            <br>A violência praticada contra a mulher, constitui-se em uma das principais formas de 
                             violação de seus direitos, atingindo o direito à vida, à saúde e à integridade física                        
                             e é um problema público, que em todas suas formas, 
                             atinge mulheres de diferentes classes sociais, escolaridades, regiões ou etnias.                           
-                        </h4>
+                        </h3>
                     </div>
                 </div>
 

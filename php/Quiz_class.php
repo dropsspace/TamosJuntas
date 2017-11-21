@@ -58,13 +58,20 @@ class Quiz {
                         $encontrou = true;
                     }
                 }
+                //Seu companheiro/a usa seus filhos como chantagem?
                 if ($_SESSION["filhos"] == 0 && $idPergunta == 76) {
                     $encontrou = true;
                 }
-                if ($_SESSION["estuda"] == 0 && $idPergunta == 7) {
+                //Seu companheiro/a impede que você estude?
+                if ($_SESSION["estuda"] == 1 && $idPergunta == 7) {
                     $encontrou = true;
                 }
-                if ($_SESSION["trabalha"] == 0 && $idPergunta == 9) {
+                //Seu companheiro/a impede que você trabalhe?
+                if ($_SESSION["trabalha"] == 1 && $idPergunta == 9) {
+                    $encontrou = true;
+                }
+                //Seu companheiro/a  já estragou seus instrumentos de trabalho? 
+                if ($_SESSION["trabalha"] == 0 && $idPergunta == 49) {
                     $encontrou = true;
                 }
                 if ($encontrou) {
@@ -172,7 +179,7 @@ class Quiz {
         }
         if ($idViolencia == 5) {
             $_SESSION["controlador"][5] = $_SESSION["controlador"][5] + 1;
-            
+
             if ($_SESSION["controlador"][5] == 20) {
                 array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }

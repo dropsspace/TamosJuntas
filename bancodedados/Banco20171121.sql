@@ -28,8 +28,17 @@ CREATE TABLE IF NOT EXISTS `tbconclusao` (
   CONSTRAINT `FK_tbconclusao_tbuso` FOREIGN KEY (`idUso`) REFERENCES `tbuso` (`IDuso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=173 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbconclusao: ~150 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbconclusao: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbconclusao` DISABLE KEYS */;
+INSERT INTO `tbconclusao` (`IDConclusao`, `idUso`, `idtpViolencia`) VALUES
+	(174, 9, 4),
+	(175, 9, 5),
+	(176, 10, 2),
+	(177, 10, 5),
+	(178, 10, 3),
+	(179, 10, 1),
+	(180, 10, 6),
+	(181, 10, 4);
 /*!40000 ALTER TABLE `tbconclusao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela dbempodera.tbpergunta
@@ -43,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `tbpergunta` (
   CONSTRAINT `FK_tbpergunta_tbtipoviolencia` FOREIGN KEY (`IDtpViolencia`) REFERENCES `tbtipoviolencia` (`IDtpViolencia`)
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1 COMMENT='Perguntas apresentadas pelo Sistema';
 
--- Copiando dados para a tabela dbempodera.tbpergunta: ~54 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbpergunta: ~57 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbpergunta` DISABLE KEYS */;
 INSERT INTO `tbpergunta` (`IDpergunta`, `IDtpViolencia`, `pergunta`, `tpResposta`) VALUES
 	(1, 3, ' Seu companheiro/a já te:', 'C'),
@@ -53,7 +62,6 @@ INSERT INTO `tbpergunta` (`IDpergunta`, `IDtpViolencia`, `pergunta`, `tpResposta
 	(7, 5, 'Seu companheiro/a impede que você estude?', 'R'),
 	(9, 5, 'Seu companheiro/a impede que você trabalhe?', 'R'),
 	(10, 5, 'Seu companheiro/a controla com quem você anda no trabalho?', 'R'),
-	(11, 5, 'Seu companheiro/a usa as/os filhas/os para fazer chantagem? ', 'R'),
 	(12, 5, 'Seu companheiro/a faz várias ligações durante o dia para garantir que você está onde disse que estaria?', 'R'),
 	(13, 5, 'Seu companheiro/a controla:', 'C'),
 	(14, 5, ' Seu companheiro/a faz várias ligações durante o dia para garantir que você está onde disse que estaria?', 'R'),
@@ -63,14 +71,14 @@ INSERT INTO `tbpergunta` (`IDpergunta`, `IDtpViolencia`, `pergunta`, `tpResposta
 	(21, 5, 'Seu companheiro/a diminui suas conquistas? ', 'R'),
 	(22, 5, 'Seu companheiro/a ', 'C'),
 	(23, 5, 'Seu companheiro/a usa como desculpa, as drogas e álcool, para dizer coisas indelicadas?', 'R'),
-	(27, 5, 'Seu companheiro/a evita/proíbe que você', 'C'),
+	(27, 5, 'Seu companheiro/a evita ou proíbe que você', 'C'),
 	(32, 5, 'Seu companheiro/a já a ameaçou caso rompesse o relacionamento? \r\n', 'R'),
-	(33, 5, 'Seu companheiro/a transmite a sensação de que “não há como sair” do relacionamento?', 'R'),
+	(33, 5, 'Seu companheiro/a transmite a sensação de que não há como sair do relacionamento?', 'R'),
 	(34, 5, 'Seu companheiro/a desconsidera sua opinião ou decisão?', 'R'),
 	(35, 5, 'Seu companheiro/a já te prendeu em casa alguma vez?', 'R'),
 	(36, 5, 'Seu companheiro/a já te fez pensar que está ficando louca ou confusa? ', 'R'),
 	(37, 5, 'Seu companheiro/a já te fez sentir culpada por algo?  ', 'R'),
-	(38, 2, 'Seu companheiro/a aceita utilizar preservativo?', 'R'),
+	(38, 2, 'Seu companheiro/a se nega a utilizar preservativo?', 'R'),
 	(39, 2, 'Seu companheiro/a já te forçou a assistir pornografia? ', 'R'),
 	(40, 2, 'Seu companheiro/a faz pressão para ter relações sexuais, mesmo que você não quer?', 'R'),
 	(41, 2, 'Seu companheiro/a  já te forçou a realizar práticas sexuais que causam desconforto ou nojo? ', 'R'),
@@ -86,23 +94,24 @@ INSERT INTO `tbpergunta` (`IDpergunta`, `IDtpViolencia`, `pergunta`, `tpResposta
 	(55, 4, 'Seu companheiro/a  já ameaçou disseminar suas fotos ou seus vídeos pessoais?', 'R'),
 	(56, 4, 'Seu companheiro/a  já expôs fotos ou vídeos seus na internet sem sua permissão?', 'R'),
 	(57, 5, 'Seu companheiro já falou que ninguém nunca vai te amar, te aceitar ou te querer além dele?', 'R'),
-	(58, 6, 'Seu companheiro fala que  você tem sorte por eu ele querer estar em um relacionamento  com você? ', 'R'),
-	(59, 6, 'Seu companheiro não reage positivamente a suas conquistas e às coisas boas que acontecem na sua vida? ', 'R'),
-	(60, 6, 'Seu companheiro fala que em briga de casal outras pessoas não devem interferir? ', 'R'),
-	(61, 6, 'Seu companheiro fala que seus problemas são "coisa de casal" e que não devem ser compartilhados com amigos ou com a sua família?\r\n', 'R'),
-	(62, 6, 'Seu companheiro desconta a agressividade batendo em mesas, portas e outros objetos.\r\n', 'R'),
+	(58, 6, 'Seu companheiro/a fala que  você tem sorte por ele querer estar em um relacionamento  com você? ', 'R'),
+	(59, 6, 'Seu companheiro/a reage negativamente à suas conquistas e às coisas boas que acontecem na sua vida? ', 'R'),
+	(60, 6, 'Seu companheiro/a fala que em briga de casal outras pessoas não devem interferir? ', 'R'),
+	(61, 6, 'Seu companheiro/a fala que seus problemas são "coisa de casal" e que não devem ser compartilhados com amigos ou com a sua família?\r\n', 'R'),
+	(62, 6, 'Seu companheiro/a desconta a agressividade batendo em mesas, portas e outros objetos.\r\n', 'R'),
 	(64, 6, 'O humor do seu companheiro/a muda de agressivo e abusivo para uma aparência humilde, desculpando-se e tornando-se uma pessoa amorosa depois que o abuso aconteceu?', 'R'),
 	(65, 6, 'Seu companheiro/a já te encheu de presentes após ser violento/agressivo com você? ', 'R'),
-	(66, 5, 'Seu companheiro/a não incentiva você a conquistar seus sonhos?', 'R'),
+	(66, 5, 'Seu companheiro/a te desmotiva a conquistar seus sonhos?', 'R'),
 	(67, 6, 'Seu companheiro/a já se sentiu incomodado com você estudar? ', 'R'),
 	(68, 6, 'Seu companheiro/a já se sentiu incomodado com você trabalhar? ', 'R'),
 	(69, 6, 'Seu companheiro/a diz que você não é nada sem ele ou que ele não é nada sem você?', 'R'),
-	(70, 6, 'Você sente que precisa pedir permissão para seu companheiro(a)  para sair sozinha? ', 'R'),
+	(70, 6, 'Você sente que precisa pedir permissão para seu companheiro/a  para sair sozinha? ', 'R'),
 	(71, 6, 'Seu companheiro/a costuma fazer com que você se sinta mal?', 'R'),
-	(72, 6, 'Seu companheiro diz que roupas você não pode usar? ', 'R'),
+	(72, 6, 'Seu companheiro/a diz que roupas você não pode usar? ', 'R'),
 	(73, 3, 'Seu companheiro/a já te:', 'C'),
 	(74, 3, 'Seu companheiro/a já', 'C'),
-	(75, 5, 'Seu companheiro/a controla:', 'C');
+	(75, 5, 'Seu companheiro/a controla:', 'C'),
+	(76, 5, 'Seu companheiro/a usa seus filhos como chantagem?', 'R');
 /*!40000 ALTER TABLE `tbpergunta` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela dbempodera.tbresposta
@@ -116,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `tbresposta` (
   CONSTRAINT `FK_tbresposta_tbpergunta` FOREIGN KEY (`IDpergunta`) REFERENCES `tbpergunta` (`IDpergunta`)
 ) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbresposta: ~125 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbresposta: ~129 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbresposta` DISABLE KEYS */;
 INSERT INTO `tbresposta` (`IDresposta`, `IDpergunta`, `resposta`, `simnao`) VALUES
 	(1, 1, 'empurrou', NULL),
@@ -144,7 +153,6 @@ INSERT INTO `tbresposta` (`IDresposta`, `IDpergunta`, `resposta`, `simnao`) VALU
 	(29, 12, NULL, 'Sim'),
 	(30, 7, NULL, 'Sim'),
 	(31, 10, NULL, 'Sim'),
-	(32, 11, NULL, 'Sim'),
 	(33, 9, NULL, 'Não'),
 	(34, 14, NULL, 'Sim'),
 	(35, 15, 'seu celular', NULL),
@@ -203,7 +211,6 @@ INSERT INTO `tbresposta` (`IDresposta`, `IDpergunta`, `resposta`, `simnao`) VALU
 	(91, 12, NULL, 'Não'),
 	(92, 7, NULL, 'Não'),
 	(93, 10, NULL, 'Não'),
-	(94, 11, NULL, 'Não'),
 	(95, 9, NULL, 'Sim'),
 	(96, 14, NULL, 'Não'),
 	(97, 19, NULL, 'Sim'),
@@ -262,8 +269,15 @@ CREATE TABLE IF NOT EXISTS `tbresultadoresposta` (
   CONSTRAINT `FK__tbuso` FOREIGN KEY (`IdUso`) REFERENCES `tbuso` (`IDuso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=395 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbresultadoresposta: ~129 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbresultadoresposta: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbresultadoresposta` DISABLE KEYS */;
+INSERT INTO `tbresultadoresposta` (`IdResultadoResposta`, `IdUso`, `IdResposta`) VALUES
+	(465, 10, 109),
+	(466, 10, 31),
+	(467, 10, 12),
+	(468, 10, 112),
+	(469, 10, 127),
+	(470, 10, 134);
 /*!40000 ALTER TABLE `tbresultadoresposta` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela dbempodera.tbtipoviolencia
@@ -296,8 +310,13 @@ CREATE TABLE IF NOT EXISTS `tbuso` (
   PRIMARY KEY (`IDuso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbuso: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbuso: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbuso` DISABLE KEYS */;
+INSERT INTO `tbuso` (`IDuso`, `dataAcesso`, `filhos`, `estuda`, `trabalha`, `tpRelacionamento`) VALUES
+	(8, '2021-11-17 12:04:54', '0', '0', '0', '0'),
+	(9, '2021-11-17 12:05:27', '0', '0', '0', '0'),
+	(10, '2021-11-17 12:44:44', '1', '0', '0', '0'),
+	(11, '2021-11-17 12:46:05', '1', '0', '0', '0');
 /*!40000 ALTER TABLE `tbuso` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
