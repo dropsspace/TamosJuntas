@@ -60,7 +60,7 @@ session_destroy();
                             <a class="nav-link js-scroll-trigger" href="#testeRelacionaento">Teste seu Relacionamento</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#portfolio">Denuncie</a>
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">Denunciar</a>
                         </li>            
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#contact">Contato</a>
@@ -91,15 +91,15 @@ session_destroy();
                             <br>A violência praticada contra a mulher, constitui-se em uma das principais formas de 
                             violação de seus direitos, atingindo o direito à vida, à saúde e à integridade física.                        
                             É um problema público, que em todas suas formas e práticas, atinge mulheres de diferentes classes sociais, escolaridades, regiões ou etnias.   
-                            
+
                             <br>Fonte: <a href="http://www.spm.gov.br/assuntos/ouvidoria-da-mulher/pacto-nacional/politica-nacional-enfrentamento-a-violencia-versao-final.pdf"> Política Nacional de Enfrentamento à Violência contra as Mulheres, 2011. </a>                        
                         </h3>
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
-                       <div>
-                        <img class="img-circle img-fluid " src="img/logos/hora.png">
+                        <div>
+                            <img class="img-circle img-fluid " src="img/logos/hora.png">
                         </div>
                         <h3 class="service-heading">4 minutos</h3>
                         <p class="text-muted">	
@@ -110,7 +110,7 @@ session_destroy();
                     </div>
                     <div class="col-md-4">
                         <div>
-                        <img class="img-circle img-fluid " src="img/logos/internacoes.png">
+                            <img class="img-circle img-fluid " src="img/logos/internacoes.png">
                         </div>
                         <h3 class="service-heading">405 Registros</h3>
                         <p class="text-muted">
@@ -120,8 +120,8 @@ session_destroy();
                             </a></p>
                     </div>
                     <div class="col-md-4">
-                         <div>
-                        <img class="img-circle img-fluid " src="img/logos/mortes.png">
+                        <div>
+                            <img class="img-circle img-fluid " src="img/logos/mortes.png">
                         </div>
                         <h3 class="service-heading">3 Femicídios </h3>
                         <p class="text-muted">Estatísticas apontam que são registrados 3 homicídios de mulheres no Brasil. 
@@ -130,25 +130,61 @@ session_destroy();
                             </a></p>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h3 class="section-subheading">
-                            <br>A violência praticada contra a mulher, constitui-se em uma das principais formas de 
-                            violação de seus direitos, atingindo o direito à vida, à saúde e à integridade física                        
-                            e é um problema público, que em todas suas formas, 
-                            atinge mulheres de diferentes classes sociais, escolaridades, regiões ou etnias.                           
+                            <br>A violência praticada contra a mulher se expressa em diferentes modalidades com altos índices de banalização e tolerância do problema pela sociedade. 
+                            <br> Aproximadamente 52 milhões de brasileiros, 41% da população, conhecem um homem que já foi violento com a parceira. No entanto, 16% dos homens assumem ter sido violentos com a atual ou
+                            a ex-companheira e 12% admitem violência com a companheira atual. <br>Fonte: <a href="http://centralmulheres.com.br/data/avon/Pesquisa-Avon-Datapopular-2013.pdf"> Instituto Avon, Data Popular, 2013.</a>
+
                         </h3>
                     </div>
                 </div>
-
-
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div>
+                            <img class="img-circle img-fluid " src="img/logos/mulher.png">
+                        </div>
+                        <h3 class="service-heading">54%</h3>
+                        <p class="text-muted">54% dos entrevistados conhecem uma mulher que já foi agredida por um parceiro. 
+                        </p>
+                        <p class="text-muted"><a href="http://agenciapatriciagalvao.org.br/wp-content/uploads/2013/08/livro_pesquisa_violencia.pdf">Fonte: Instituto Avon, Data Popular, 2013.
+                            </a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <img class="img-circle img-fluid " src="img/logos/homem.png">
+                        </div>
+                        <h3 class="service-heading">41%</h3>
+                        <p class="text-muted">41% dos entrevistados conhecem um homem que já foi violento com sua parceira. 
+                        </p>
+                        <p class="text-muted"><a href="http://centralmulheres.com.br/data/avon/Pesquisa-Avon-Datapopular-2013.pdf">Fonte: Instituto Avon, Data Popular, 2013.
+                            </a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <img class="img-circle img-fluid " src="img/logos/lei.png">
+                        </div>
+                        <h3 class="service-heading">98%</h3>
+                        <p class="text-muted">98% da população conhece ou já ouviu falar da Lei 11.340 ou Maria da Penha. 
+                        </p>
+                        <p class="text-muted"><a href="http://agenciapatriciagalvao.org.br/wp-content/uploads/2013/08/livro_pesquisa_violencia.pdf">Fonte: Instituto Avon, Data Popular, 2013.
+                            </a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h3 class="section-subheading">
+                            <br> 
+                            <br>Tendo como motivação confrontar com a naturalização da violência pela sociedade surgiu este projeto com o objetivo apoiar mulheres na identificação de relacionamentos abusivos, alertar sobre as diferentes manifestações de violência e informar os procedimentos para denúncia através de uma solução tecnológica especialista que permita a preservação da identidade da usuária.
+                        </h3>
+                    </div>
+                </div>
             </div>
         </section>
-        <!---- Imagem !---->
         <section id="pic1">
-
         </section>
-
         <section id = "testeRelacionaento"> 
             <div class="container">
                 <div class="row">
