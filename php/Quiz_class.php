@@ -58,6 +58,15 @@ class Quiz {
                         $encontrou = true;
                     }
                 }
+                if ($_SESSION["filhos"] == 0 && $idPergunta == 76) {
+                    $encontrou = true;
+                }
+                if ($_SESSION["estuda"] == 0 && $idPergunta == 7) {
+                    $encontrou = true;
+                }
+                if ($_SESSION["trabalha"] == 0 && $idPergunta == 9) {
+                    $encontrou = true;
+                }
                 if ($encontrou) {
                     $tipoCerto = false;
                 } else {
@@ -151,7 +160,7 @@ class Quiz {
         }
         if ($idViolencia == 3) {
             $_SESSION["controlador"][3] = $_SESSION["controlador"][3] + 1;
-            if ($_SESSION["controlador"][3] == 4) {
+            if ($_SESSION["controlador"][3] == 6) {
                 array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
         }
@@ -163,7 +172,8 @@ class Quiz {
         }
         if ($idViolencia == 5) {
             $_SESSION["controlador"][5] = $_SESSION["controlador"][5] + 1;
-            if ($_SESSION["controlador"][5] == 22) {
+            
+            if ($_SESSION["controlador"][5] == 20) {
                 array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
         }

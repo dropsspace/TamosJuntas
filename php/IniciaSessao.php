@@ -6,6 +6,7 @@ include("config.php");
 
 //Armazeno duas informações na sessão do usuário: se ele está logado, e o login de acesso. A partir desse momento, qualquer página habilitada a trabalhar com variáveis de sessão, poderá resgatar essas variáveis, manipulá-las, sobreescrevê-las etc.
 
+
 $_SESSION["logado"] = TRUE;
 $_SESSION["filhos"] = $_POST["filhos"];
 $_SESSION["estuda"] = $_POST["estuda"];

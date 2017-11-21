@@ -10,7 +10,7 @@ class RegistroUso {
 
     public function registraUso($dtaAcesso, $filhos, $estuda, $trabalha, $tpRelacionamento) {
         $sql = "INSERT INTO `dbempodera`.`tbuso` (`dataAcesso`, `filhos`, `estuda`, `trabalha`, `tpRelacionamento`) VALUES ('$dtaAcesso','$filhos','$estuda','$trabalha','$tpRelacionamento');";
-        mysqli_query($mysql->link, $sql);  
+        mysqli_query($this->mysql->link, $sql);
         $idUso = $this->selectIdUso();
         return $idUso;
     }

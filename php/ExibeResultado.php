@@ -28,7 +28,7 @@ include("config.php");
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #222222;" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../index.html#">Estamos Juntas!</a>
+                <a class="navbar-brand js-scroll-trigger" href="../index.php">Estamos Juntas!</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fa fa-bars"></i>
@@ -36,7 +36,7 @@ include("config.php");
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="../index.html">Início</a>
+                            <a class="nav-link js-scroll-trigger" href="../index.php">Início</a>
                         </li>                                                           
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#services">Meu Resultado</a>
@@ -137,12 +137,12 @@ include("config.php");
                                 echo '<tr> <td align=right>';
                                 echo '<a class="btn btn-primary portfolio-link" data-toggle="modal" href="#denuncie1">Como Denunciar a Violência?</a> ';
                                 echo '<a href="ExibeRespostas.php" class="btn btn-primary">Ver Minhas Respostas</a> ';
-                                echo '<a href="../index.html" class="btn btn-primary">Testar Novamente</a>';
+                                echo '<a href="../index.php" class="btn btn-primary">Testar Novamente</a>';
                                 echo '</td></tr>';
                             } else if ($saudavel) {
                                 echo '<tr> <td align=right>';
                                 echo '<a href="ExibeRespostas.php" class="btn btn-primary">Ver Minhas Respostas</a> ';
-                                echo '<a href="../index.html" class="btn btn-primary">Testar Novamente</a></td></tr>';
+                                echo '<a href="../index.php" class="btn btn-primary">Testar Novamente</a></td></tr>';
                             }
                             ?>                                 
                         </table>                   

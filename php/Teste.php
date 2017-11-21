@@ -30,7 +30,7 @@ $quiz = new Quiz($mysql);
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #222222;" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../index.html">Estamos Juntas!</a>
+                <a class="navbar-brand js-scroll-trigger" href="../index.php">Estamos Juntas!</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fa fa-bars"></i>
@@ -38,7 +38,7 @@ $quiz = new Quiz($mysql);
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger " href="../index.html">Início</a>
+                            <a class="nav-link js-scroll-trigger " href="../index.php">Início</a>
                         </li>     
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#teste">Teste Seu Relacionamento</a>
@@ -52,8 +52,9 @@ $quiz = new Quiz($mysql);
             <div class="container">
                 <table class="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr>                            
                             <?php
+                            
                             $quiz->validateste();
                             if ($_SESSION["terminouTeste"] == false) {
                                 echo "<th class=bg-warning><h3> Pergunta " . (count($_SESSION["perguntas"]) + 1) . "</h2></th></tr></thead>";

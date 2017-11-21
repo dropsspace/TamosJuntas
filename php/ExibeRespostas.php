@@ -30,7 +30,7 @@ $perguntas = new Pergunta($mysql);
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #222222;" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../index.html#">Estamos Juntas!</a>
+                <a class="navbar-brand js-scroll-trigger" href="../index.php">Estamos Juntas!</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fa fa-bars"></i>
@@ -38,8 +38,11 @@ $perguntas = new Pergunta($mysql);
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="../index.html">Início</a>
-                        </li>                                                           
+                            <a class="nav-link js-scroll-trigger" href="../index.php">Início</a>
+                        </li>   
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="ExibeResultado.php">Meu Resultado</a>
+                        </li>  
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#services">Minhas Respostas</a>
                         </li>
