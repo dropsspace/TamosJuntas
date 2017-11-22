@@ -8,6 +8,8 @@ p {
 
 }
 
+
+
 a {
     color: #fed136; }
 a.active, a:active, a:focus, a:hover {
@@ -120,8 +122,7 @@ body {
         padding: 12px 0; } }
 
 #othernav
-background-color: #222222; }
-{
+background-color: #222222; {
     background-color: #222222; }
 
 

@@ -80,13 +80,10 @@ include("config.php");
                                         $psicologica = true;
                                     }
                                 } else if ($_SESSION["violenciasIdentificadas"][$y] == 6) {
-
-                                    $risco = true;
-                                } else {
-                                    $saudavel = true;
+                                   $risco = true;       
                                 }
                             }
-                            if (!$abusivo && !$patrimonial && !$sexual && !$fisica && !$moral && !$psicologica) {
+                            if (!$abusivo && !$patrimonial && !$sexual && !$fisica && !$moral && !$psicologica && !$risco) {
                                $saudavel = true;
                             }
                         }
@@ -145,7 +142,7 @@ include("config.php");
                                 echo '<a href="../index.php" class="btn btn-primary">Testar Novamente</a></td></tr>';
                             }
                             ?>                                 
-                        </table>                   
+                        </table>                             
                     </div>
                 </div>
             </div>

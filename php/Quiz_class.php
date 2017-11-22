@@ -67,7 +67,7 @@ class Quiz {
                     $encontrou = true;
                 }
                 //Seu companheiro/a impede que você trabalhe?
-                if ($_SESSION["trabalha"] == 1 && $idPergunta == 9) {
+                if ($_SESSION["trabalha"] == 1 && $idPergunta == 9 || $idPergunta == 10 ) {
                     $encontrou = true;
                 }
                 //Seu companheiro/a  já estragou seus instrumentos de trabalho? 
@@ -180,7 +180,7 @@ class Quiz {
         if ($idViolencia == 5) {
             $_SESSION["controlador"][5] = $_SESSION["controlador"][5] + 1;
 
-            if ($_SESSION["controlador"][5] == 20) {
+            if ($_SESSION["controlador"][5] == 19) {
                 array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
         }

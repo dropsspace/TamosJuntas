@@ -59,7 +59,7 @@ $perguntas = new Pergunta($mysql);
                                 <tr>
                                     <th class=bg-warning><h4>Pergunta</h4></th>
                                     <th class=bg-warning><h4>Resposta</h4></th>
-                            </tr>
+                                </tr>
                             </thead>
                             <tbody>
                                 <?php
@@ -91,10 +91,23 @@ $perguntas = new Pergunta($mysql);
                                         }
                                     }
                                     ?>
-                                        </p></td>
+                                    </p></td>
                                 </tr>                           
                             </tbody>
                         </table>
+                        <div class="container" align = "center">
+                            <table>
+                                <tr>
+                                    <td colspan="2" align = "center"><p><b> Legenda </b></p></td>
+                                </tr>
+                                <tr> 
+                                    <td class=bg-danger><p> Resposta </p></td><td> <p>Indica Ação Abusiva</p></td>
+                                </tr>
+                                <tr>
+                                    <td class=bg-success><p> Resposta</p></td><td><p>Indica Ação Saudável</p></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

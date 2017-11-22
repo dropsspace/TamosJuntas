@@ -115,7 +115,7 @@ $quiz = new Quiz($mysql);
                         </table>
                         <?php
                     }
-                    print_r($_SESSION);
+                    //print_r($_SESSION);
                 } else {
                     header("Location:ResultadoTeste.php");
                 }
