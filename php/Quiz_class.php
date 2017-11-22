@@ -155,7 +155,7 @@ class Quiz {
         if ($idViolencia == 1) {
             //se a pergunta for do tipo 1, controlador recebe +1 
             $_SESSION["controlador"][1] = $_SESSION["controlador"][1] + 1;
-            if ($_SESSION["controlador"][1] == 5) {
+            if ($_SESSION["controlador"][1] == 4) {
                 array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
         }
