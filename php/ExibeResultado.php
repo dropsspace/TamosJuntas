@@ -165,7 +165,10 @@ include("config.php");
                             <div class="col-lg-8 mx-auto">
                                 <div class="modal-body">
                                     <h2>Você não está sozinha!</h2>  
-                                    <p>Conheça formas de encontrar ajuda e realizar a denúncia da violência</p> 
+                                    <p>A denúncia de violência doméstica pode ser feita em qualquer delegacia, com o registro de um boletim de ocorrência, ou pela Central de Atendimento à Mulher (Ligue 180). A denúncia é anônima e gratuita, disponível 24 horas, em todo o país.
+                                    </p>
+                                    <p>Ao registrar o boletim de ocorrência em uma delegacia, você pode entrar com uma medida protetiva sob a Lei Maria da Penha que obriga o agressor a se manter longe. </p>
+                                    <p>As prefeituras também oferecem centros atendimento, que acolhem as mulheres em situação de violência  oferecendo apoio social, jurídico e psicológico sem precisar de boletim de ocorrência.</p> 
                                     <div class="modal-body">
                                         <!-- Project Details Go Here -->
                                         <h3>Disque 180</h3>
