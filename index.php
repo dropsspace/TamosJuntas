@@ -200,7 +200,7 @@ session_destroy();
                     <div class="w3-content w3-display-container">
                         <form action="php/IniciaSessao.php" method="post" id="start">
                             <div  class="mySlides">
-                                <h3>Você têm filhos?</h3>
+                                <h3>Você tem filhos?</h3>
                                 <div>
                                     <input type="radio" name="filhos" id="question-1-answers" value="0" checked />
                                     <label for="question-1-answers-B" class="fwrd labelb">Não</label>
@@ -233,7 +233,7 @@ session_destroy();
                                 </div>
                             </div>
                             <div  class="mySlides">
-                                <h3>Você esta em um relacionamento:</h3>
+                                <h3>Você está em um relacionamento:</h3>
                                 <div>
                                     <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/>
                                     <label for="question-1-answers-B" class="fwrd labelb">Heteroafetivo</label>
