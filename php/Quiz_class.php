@@ -180,7 +180,7 @@ class Quiz {
         if ($idViolencia == 5) {
             $_SESSION["controlador"][5] = $_SESSION["controlador"][5] + 1;
 
-            if ($_SESSION["controlador"][5] == 19) {
+            if ($_SESSION["controlador"][5] == 18) {
                 array_push($_SESSION["violenciasFinalizadas"], $idViolencia);
             }
         }
