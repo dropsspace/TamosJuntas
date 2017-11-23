@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `tbconclusao` (
   CONSTRAINT `FK_tbconclusao_tbuso` FOREIGN KEY (`idUso`) REFERENCES `tbuso` (`IDuso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbconclusao: ~50 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbconclusao: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbconclusao` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbconclusao` ENABLE KEYS */;
 
@@ -55,7 +55,6 @@ INSERT INTO `tbpergunta` (`IDpergunta`, `IDtpViolencia`, `pergunta`, `tpResposta
 	(10, 5, 'Seu companheiro/a controla com quem você anda no trabalho?', 'R'),
 	(12, 5, 'Seu companheiro/a faz várias ligações durante o dia para garantir que você está onde disse que estaria?', 'R'),
 	(13, 5, 'Seu companheiro/a controla:', 'C'),
-	(14, 5, ' Seu companheiro/a faz várias ligações durante o dia para garantir que você está onde disse que estaria?', 'R'),
 	(15, 5, 'Seu companheiro/a já vasculhou ', 'C'),
 	(19, 5, 'Seu companheiro/a tem ciúmes excessivos de seus amigos ou parentes? ', 'R'),
 	(20, 5, 'Seu companheiro/a constrange você na frente dos amigos ou da família?', 'R'),
@@ -145,7 +144,6 @@ INSERT INTO `tbresposta` (`IDresposta`, `IDpergunta`, `resposta`, `simnao`) VALU
 	(30, 7, NULL, 'Não'),
 	(31, 10, NULL, 'Sim'),
 	(33, 9, NULL, 'Não'),
-	(34, 14, NULL, 'Não'),
 	(35, 15, 'seu celular', NULL),
 	(36, 15, 'suas redes sociais', NULL),
 	(37, 15, 'suas coisas', NULL),
@@ -203,7 +201,6 @@ INSERT INTO `tbresposta` (`IDresposta`, `IDpergunta`, `resposta`, `simnao`) VALU
 	(92, 7, NULL, 'Sim'),
 	(93, 10, NULL, 'Não'),
 	(95, 9, NULL, 'Sim'),
-	(96, 14, NULL, 'Sim'),
 	(97, 19, NULL, 'Sim'),
 	(98, 20, NULL, 'Sim'),
 	(99, 21, NULL, 'Sim'),
@@ -262,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `tbresultadoresposta` (
   CONSTRAINT `FK__tbuso` FOREIGN KEY (`IdUso`) REFERENCES `tbuso` (`IDuso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbresultadoresposta: ~499 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbresultadoresposta: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbresultadoresposta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbresultadoresposta` ENABLE KEYS */;
 
@@ -273,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `tbtipoviolencia` (
   PRIMARY KEY (`IDtpViolencia`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbtipoviolencia: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbtipoviolencia: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbtipoviolencia` DISABLE KEYS */;
 INSERT INTO `tbtipoviolencia` (`IDtpViolencia`, `tpViolencia`) VALUES
 	(1, 'patrimonial'),
