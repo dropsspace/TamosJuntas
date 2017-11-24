@@ -80,11 +80,11 @@ include("config.php");
                                         $psicologica = true;
                                     }
                                 } else if ($_SESSION["violenciasIdentificadas"][$y] == 6) {
-                                   $risco = true;       
+                                    $risco = true;
                                 }
                             }
                             if (!$abusivo && !$patrimonial && !$sexual && !$fisica && !$moral && !$psicologica && !$risco) {
-                               $saudavel = true;
+                                $saudavel = true;
                             }
                         }
                         ?>
@@ -92,7 +92,7 @@ include("config.php");
                             <?php
                             if ($abusivo) {
                                 echo'<thead><tr><th class=bg-warning><h2> Resultado:</h2></th></tr></thead>';
-                                echo '<tr><td><img class="img-fluid" src="../img/result/abusivo.png" alt=""></th></tr>';
+                                echo '<tr><td align="center"><img class="img-fluid"  src="../img/result/abusivo.png" alt=""></th></tr>';
                                 echo'<thead><tr><th class=bg-warning><h3> Relacionamento Abusivo </h3></th></tr></thead>';
                                 echo '<tr><td><p class="item-intro">Uma ou mais respostas referem-se à ações que configuram crime de violência contra a mulher conforme a lei 11.540/16:</p></th></tr>';
 
@@ -162,9 +162,9 @@ include("config.php");
                             <div class="col-lg-8 mx-auto">
                                 <div class="modal-body">
                                     <h2>Você não está sozinha!</h2>  
-                                    <p>A denúncia de violência doméstica pode ser feita em qualquer delegacia, com o registro de um boletim de ocorrência, ou pela Central de Atendimento à Mulher (Ligue 180). A denúncia é anônima e gratuita, disponível 24 horas, em todo o país.
-                                    </p>
-                                    <p>Ao registrar o boletim de ocorrência em uma delegacia, você pode entrar com uma medida protetiva sob a Lei Maria da Penha que obriga o agressor a se manter longe. </p>
+                                    <p>A denúncia de violência doméstica pode ser feita em qualquer delegacia, com o registro de um boletim de ocorrência, pela Central de Atendimento à Mulher (Ligue 180) ou pelo telefone dedicado à emergencias políciais discando 190. 
+                                        A denúncia é anônima e gratuita, disponível 24 horas, em todo o país.
+                                    </p><p>Ao registrar o boletim de ocorrência em uma delegacia, você pode entrar com uma medida protetiva sob a Lei Maria da Penha que obriga o agressor a se manter longe. </p>
                                     <p>As prefeituras também oferecem centros atendimento, que acolhem as mulheres em situação de violência  oferecendo apoio social, jurídico e psicológico sem precisar de boletim de ocorrência.</p> 
                                     <div class="modal-body">
                                         <!-- Project Details Go Here -->
@@ -178,6 +178,15 @@ include("config.php");
                                         <a href="http://www.spm.gov.br/ligue-180" target="_blank"> <button class="btn btn-primary" type="submit">                 
                                                 Saber Mais</button> </a>
                                     </div>
+                                    <div class="modal-body">
+
+                                        <h3>Disque 190</h3>
+                                        <img class="img-fluid d-block mx-auto" src="img/projetos/icon180.png" alt="">
+                                        <p>
+                                            O número 190 foi criado para atender situações de emergência. Caso não seja atendida após os primeiros toques é porque as posições de atendimento disponíveis naquele momento estão ocupadas e, se você desligar, perderá posições na espera, portanto permaneça aguardando o atendimento.
+                                        </p>   
+                                    </div>
+
                                     <div class="modal-body">
                                         <!-- Project Details Go Here -->
                                         <h3>Mapa da Justiça</h3>                                    

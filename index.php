@@ -191,7 +191,11 @@ session_destroy();
                     <div class="col-lg-12 text-center">
                         <h2 class="section-heading">Teste seu Relacionamento</h2>
                         <h3 class="section-subheading text-muted">Verifique se vocês está em um Relacionamento Abusivo</h3>
-
+                        <h3 class="section-subheading">
+                            <br>Este teste tem a intenção de te apoiar na identificação de um relacionamento abusivo sem armazenar sua identidade pessoal ou ser instalado.
+                            No início você responde questões relacionadas à você e seu relacionamento e após, ao clicar no botão Teste seu Relacionamento, o sistema apresenta uma série de vivências que podem ser respondidas selecionando várias opções, uma opção, ou nenhuma opção quando não houver a vivência. 
+                            Ao final o sistema qualifica seu relacionamento como Relacionamento Saudável, Relacionamento de Risco ou Relacionamento Abusivo. Fique tranquila, seu resultado é apagado após o término de teste, ou seja, ninguém conseguirá visualizá-lo. 
+                        </h3>
                     </div>
                 </div>          
                 <div class="col-lg-12 text-center">
@@ -202,45 +206,50 @@ session_destroy();
                             <div  class="mySlides">
                                 <h3>Você tem filhos?</h3>
                                 <div>
-                                    <input type="radio" name="filhos" id="question-1-answers" value="0" checked />
-                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                                    <label>
+                                        <input type="radio" name="filhos" id="question-1-answers" value="0" checked /> Não
+                                    </label>    
                                 </div>  
                                 <div>
-                                    <input type="radio" name="filhos" id="question-1-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                                    <label>
+                                        <input type="radio" name="filhos" id="question-1-answers" value="1" /> Sim
+                                    </label>
                                 </div>
                             </div>
                             <div  class="mySlides">
                                 <h3>Você estuda?</h3>
                                 <div>
-                                    <input type="radio" name="estuda" id="question-2-answers" value="0" checked />
-                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                                    <label>
+                                        <input type="radio" name="estuda" id="question-2-answers" value="0" checked /> Não
+
+                                    </label>
                                 </div>   
                                 <div>
-                                    <input type="radio" name="estuda" id="question-2-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                                    <label>
+                                        <input type="radio" name="estuda" id="question-2-answers" value="1" />Sim
+                                    </label>
                                 </div>
                             </div>
                             <div  class="mySlides">
                                 <h3>Você trabalha?</h3> 
                                 <div>
-                                    <input type="radio" name="trabalha" id="question-1-answers" value="0" checked/>
-                                    <label for="question-1-answers-B" class="fwrd labelb">Não</label>
+                                    <label>
+                                        <input type="radio" name="trabalha" id="question-1-answers" value="0" checked/> Não
+                                    </label>
                                 </div>  
                                 <div>
-                                    <input type="radio" name="trabalha" id="question-1-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Sim</label>
+                                    <label>
+                                        <input type="radio" name="trabalha" id="question-1-answers" value="1" /> Sim
+                                    </label>
                                 </div>
                             </div>
                             <div  class="mySlides">
                                 <h3>Você está em um relacionamento:</h3>
                                 <div>
-                                    <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/>
-                                    <label for="question-1-answers-B" class="fwrd labelb">Heteroafetivo</label>
+                                    <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/> Não
                                 </div>    
                                 <div>
-                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" />
-                                    <label for="question-1-answers-A" class="fwrd labela">Homoafetivo</label>
+                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" /> Sim
                                 </div>
                             </div>
                             <input id="teste" type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />
