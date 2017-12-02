@@ -21,7 +21,7 @@ $_SESSION["respostas"] = array();
 $_SESSION["violenciasFinalizadas"] = array();
 $_SESSION["violenciasIdentificadas"] = array();
 //contador de perguntas 
-$_SESSION["controlador"] = array(1 =>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0);
+$_SESSION["controlador"] = array(1 =>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, "risco" =>0);
 //controla a repetição do teste
 $_SESSION["terminouTeste"] = FALSE;
 

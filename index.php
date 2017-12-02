@@ -123,8 +123,8 @@ session_destroy();
                         <div>
                             <img class="img-circle img-fluid " src="img/logos/mortes.png">
                         </div>
-                        <h3 class="service-heading">3 Femicídios </h3>
-                        <p class="text-muted">Estatísticas apontam que são registrados 3 homicídios de mulheres no Brasil. 
+                        <h3 class="service-heading">3 Feminicídios </h3>
+                        <p class="text-muted">Estatísticas apontam que são registrados 3 homicídios de mulheres diariamente no Brasil. 
                         </p>
                         <p class="text-muted"><a href="https://apublica.org/wp-content/uploads/2016/03/MapaViolencia_2015_mulheres.pdf">Fonte: Mapa da Violência, 2015.
                             </a></p>

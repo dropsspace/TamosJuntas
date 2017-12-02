@@ -30,6 +30,15 @@ class Quiz {
             //verificar se tem como eu pegar tpViolência a partir da pergunta
             $tpViolencia = $this->pergunta->selecionaTpViolenciaPergunta($resposta[0]['IDpergunta']);
 
+            if ($tpViolencia == 6) {
+                if (is_null($resposta[0]['simnao']) || $resposta[0]['simnao'] == "Sim") {
+                    $_SESSION["controlador"]["risco"] = $_SESSION["controlador"]["risco"] + 1;
+                    if ($_SESSION["controlador"]["risco"] == 3) {
+                        array_push($_SESSION["violenciasFinalizadas"], 6);
+                        array_push($_SESSION["violenciasIdentificadas"], 6);
+                    }
+                }
+            } else
             if (is_null($resposta[0]['simnao'])) {
                 //salva no array de violencias identificadas e no arrau de finalizadas  
                 array_push($_SESSION["violenciasFinalizadas"], $tpViolencia[0]["IDtpViolencia"]);
@@ -67,7 +76,7 @@ class Quiz {
                     $encontrou = true;
                 }
                 //Seu companheiro/a impede que você trabalhe?
-                if ($_SESSION["trabalha"] == 1 && $idPergunta == 9 || $idPergunta == 10 ) {
+                if ($_SESSION["trabalha"] == 1 && $idPergunta == 9 || $idPergunta == 10) {
                     $encontrou = true;
                 }
                 //Seu companheiro/a  já estragou seus instrumentos de trabalho? 
