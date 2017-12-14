@@ -246,10 +246,10 @@ session_destroy();
                             <div  class="mySlides">
                                 <h3>Você está em um relacionamento:</h3>
                                 <div>
-                                    <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/> Não
+                                    <input type="radio" name="tpRelac" id="question-1-answers" value="0" checked/> Heteroafetivo
                                 </div>    
                                 <div>
-                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" /> Sim
+                                    <input type="radio" name="tpRelac" id="question-1-answers" value="1" /> Homoafetivo
                                 </div>
                             </div>
                             <input id="teste" type="submit" id="submit" class="btn btn-primary index-btn" value="Teste seu Relacionamento" />

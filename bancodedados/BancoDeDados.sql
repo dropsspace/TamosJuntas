@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `tbconclusao` (
   KEY `FK_tbconclusao_tbtipoviolencia` (`idtpViolencia`),
   CONSTRAINT `FK_tbconclusao_tbtipoviolencia` FOREIGN KEY (`idtpViolencia`) REFERENCES `tbtipoviolencia` (`IDtpViolencia`),
   CONSTRAINT `FK_tbconclusao_tbuso` FOREIGN KEY (`idUso`) REFERENCES `tbuso` (`IDuso`)
-) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbconclusao: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbconclusao: ~135 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbconclusao` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbconclusao` ENABLE KEYS */;
 
@@ -257,9 +257,9 @@ CREATE TABLE IF NOT EXISTS `tbresultadoresposta` (
   KEY `FK__tbresposta` (`IdResposta`),
   CONSTRAINT `FK__tbresposta` FOREIGN KEY (`IdResposta`) REFERENCES `tbresposta` (`IDresposta`),
   CONSTRAINT `FK__tbuso` FOREIGN KEY (`IdUso`) REFERENCES `tbuso` (`IDuso`)
-) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1340 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbresultadoresposta: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbresultadoresposta: ~1.246 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbresultadoresposta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbresultadoresposta` ENABLE KEYS */;
 
@@ -291,9 +291,9 @@ CREATE TABLE IF NOT EXISTS `tbuso` (
   `trabalha` enum('0','1') NOT NULL,
   `tpRelacionamento` enum('0','1') DEFAULT NULL COMMENT '0=Hetero 1=Homo',
   PRIMARY KEY (`IDuso`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela dbempodera.tbuso: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela dbempodera.tbuso: ~53 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbuso` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbuso` ENABLE KEYS */;
 
